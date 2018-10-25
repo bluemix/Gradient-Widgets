@@ -47,7 +47,7 @@ GradientButton(
            ),
 
 ```
-most parameters are the same as any *`Button`.
+most parameters are the same as any `*Button`.
 
 
 
