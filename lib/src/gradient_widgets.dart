@@ -1,37 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_widgets/src/common.dart';
 
-class GradientText extends Text {
+class GradientText extends StatelessWidget {
   GradientText(
-    String data, {
+    this.data, {
+    @required this.gradient,
+    @required this.shaderRect,
+    @required this.style,
     this.key,
-    this.style,
     this.textAlign,
     this.textDirection,
     this.locale,
     this.softWrap,
     this.overflow,
-    @required this.gradient,
-//        this.shaderRect = Rect.fromLTWH(0.0, 0.0, 200.0, 200.0),
-    @required this.shaderRect,
     this.textScaleFactor,
     this.maxLines,
     this.semanticsLabel,
-  }) : super(
-          data,
-          key: key,
-          style: style.copyWith(
-              foreground: Paint()..shader = gradient.createShader(shaderRect)),
-          textAlign: textAlign,
-          textDirection: textDirection,
-          locale: locale,
-          softWrap: softWrap,
-          overflow: overflow,
-          textScaleFactor: textScaleFactor,
-          maxLines: maxLines,
-          semanticsLabel: semanticsLabel,
-        );
+  });
 
+  final String data;
   final Key key;
   final TextStyle style;
   final TextAlign textAlign;
@@ -44,16 +31,26 @@ class GradientText extends Text {
   final String semanticsLabel;
   final Gradient gradient;
   final Rect shaderRect;
+
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Text(data, key: key,
+        style: style.copyWith(
+            foreground: Paint()..shader = gradient.createShader(shaderRect ?? Rect.fromLTWH(0.0, 0.0, 50.0, 50.0))),
+        textAlign: textAlign,
+        textDirection: textDirection,
+        locale: locale,
+        softWrap: softWrap,
+        overflow: overflow,
+        textScaleFactor: textScaleFactor,
+        maxLines: maxLines,
+        semanticsLabel: semanticsLabel,);
+  }
 }
 
-//TextStyle gradientTextStyle(TextStyle textWidget, Gradient gradient,
-//    {double width = 200.0, double height = 200.0}) {
-//  final Shader textShader =
-//  gradient.createShader(Rect.fromLTWH(0.0, 0.0, width, height));
-//
-//  return textWidget.copyWith(foreground: Paint()
-//    ..shader = textShader);
-//}
+
 
 class CircularGradientButton extends StatelessWidget {
   CircularGradientButton(
@@ -88,8 +85,8 @@ class CircularGradientButton extends StatelessWidget {
     return FloatingActionButton(
       elevation: elevation,
       onPressed: callback,
-      child: gradientContainer(
-          context, gradient, increaseHeightBy, increaseWidthBy, child),
+      clipBehavior: Clip.antiAlias,
+      child: gradientContainer(context, gradient, increaseHeightBy, increaseWidthBy, child),
     );
   }
 }
@@ -131,12 +128,9 @@ class GradientButtonState extends State<GradientButton> {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
 
-    BorderRadius borderRadiusCopy =
-        widget.shapeRadius ?? BorderRadius.circular(20.0);
-    ShapeBorder shapeCopy =
-        widget.shape ?? RoundedRectangleBorder(borderRadius: borderRadiusCopy);
-    TextStyle textStyleCopy = widget.textStyle ??
-        theme.textTheme.button.copyWith(color: Colors.white);
+    BorderRadius borderRadiusCopy = widget.shapeRadius ?? BorderRadius.circular(20.0);
+    ShapeBorder shapeCopy = widget.shape ?? RoundedRectangleBorder(borderRadius: borderRadiusCopy);
+    TextStyle textStyleCopy = widget.textStyle ?? theme.textTheme.button.copyWith(color: Colors.white);
 
     Gradient gradient;
     double elevation;
@@ -166,8 +160,8 @@ class GradientButtonState extends State<GradientButton> {
       elevation: elevation,
       textStyle: textStyleCopy,
       onPressed: callback,
-      child: gradientContainer(context, gradient, widget.increaseHeightBy,
-          widget.increaseWidthBy, widget.child),
+      clipBehavior: Clip.antiAlias,
+      child: gradientContainer(context, gradient, widget.increaseHeightBy, widget.increaseWidthBy, widget.child),
     );
   }
 }
