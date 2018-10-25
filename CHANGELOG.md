@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1
+
+- updating the package link to refer to GitHub
+
 ## 0.2.0
 
 - adding GradientCard
