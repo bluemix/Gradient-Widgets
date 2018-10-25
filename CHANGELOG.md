@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.0
+
+- adding GradientCard
+
 ## 0.1.0
 
 - adding GradientText

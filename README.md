@@ -1,26 +1,81 @@
-# Gradient Widgets
 
-A simple and mostly automatic material search bar for flutter (dart).
 
-Note: use `flutter_search_bar` and not `search_bar` -- I own both packages but I'm just a tad bit locked out of `search_bar`, so it won't be updated.
 
-## Screenshots
+<center>
+![Gradient Widgets](art/screenshot1_resized_cropped.png)
+</center>
 
-Normal state (search is not active yet, only `title` and `actions` are set, with the only action being a search button)
 
-![Normal State](http://frozor.io/up/0eytLH6M.png)
 
-inBar set to false (background white, back button inherited):
 
-![inBar false](http://frozor.io/up/MdswWio.png)
+## Gradient Widgets
+Flutter widgets wrapped with gradients.
 
-inBar set to true (background inherited):
 
-![inBar true](http://frozor.io/up/FvENH9A.png)
+* GradientText
+* GradientCard
+* GradientButton
+* CircularGradientButton
 
 ## Usage
 
 
+### `GradientCard`
+
+```
+GradientCard(gradient: Gradients.tameer);
+```
+
+other parameters are the same as the `Card`.
+
+
+### `GradientButton`
+currently, you need to wrap `GradientButton` inside `Center`
+
+```
+Center(
+   child: GradientButton(
+                 child: Text('Gradient'),
+                 callback: () {},
+                 gradient: Gradients.backToFuture,
+           ),
+)
+
+```
+other parameters are the same as any *`Button`.
+
+
+
+### `GradientText`
+
+```
+GradientText('Hello',
+             shaderRect: Rect.fromLTWH(0.0, 0.0, 50.0, 50.0),
+             gradient: Gradients.hotLinear,
+             style: TextStyle(fontSize: 40.0,),);
+```
+
+other parameters are the same as the `Text`.
+
+
+
+### `CircularGradientButton`
+
+currently, you need to wrap `GradientButton` inside `Center`
+
+
+```
+Center(
+   child: CircularGradientButton(
+                 child: Icon(Icons.gradient),
+                 callback: (){},
+                 gradient: Gradients.rainbowBlue,
+           ),
+)
+
+```
+
+other parameters are the same as `FloatingActionButton`.
 
 
 

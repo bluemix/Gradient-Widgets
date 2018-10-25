@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Flutter Gradient Widgets Demo',
+      debugShowCheckedModeBanner: false,
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -74,9 +75,10 @@ class _MyHomePageState extends State<MyHomePage> {
           elevation: 0.0,
           title: new Text(
             widget.title,
-            style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w200),
+            style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w300),
           ),
         ),
+        backgroundColor: Colors.white,
         body: ListView(
           scrollDirection: Axis.vertical,
           children: <Widget>[
