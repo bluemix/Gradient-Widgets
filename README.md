@@ -1,21 +1,29 @@
 
 
 
-<center>
-![Gradient Widgets](art/screenshot1_resized_cropped.png)
-</center>
-
+![Gradient Widgets](art/screenshot2_cropped_resized.png)
 
 
 
 ## Gradient Widgets
-Flutter widgets wrapped with gradients.
+
+A minimal set of Flutter widgets wrapped with gradients.
+
+You can use them when your UI needs user attention/focus,
+, e.g., login or send actions, or important shopping item title (see [Gradient Screens](https://github.com/bluemix/Gradient-Screens) to get the idea 😉)
 
 
-* GradientText
-* GradientCard
-* GradientButton
-* CircularGradientButton
+☑️ GradientText
+
+☑️ GradientCard
+
+☑️ GradientButton
+
+☑️ CircularGradientButton
+
+◻️ ProgressBar
+
+
 
 ## Usage
 
@@ -26,23 +34,36 @@ Flutter widgets wrapped with gradients.
 GradientCard(gradient: Gradients.tameer);
 ```
 
-other parameters are the same as the `Card`.
+most parameters are the same as the `Card`.
 
 
 ### `GradientButton`
-currently, you need to wrap `GradientButton` inside `Center`
 
 ```
-Center(
-   child: GradientButton(
+GradientButton(
                  child: Text('Gradient'),
                  callback: () {},
                  gradient: Gradients.backToFuture,
            ),
-)
 
 ```
-other parameters are the same as any *`Button`.
+most parameters are the same as any *`Button`.
+
+
+
+### `CircularGradientButton`
+
+
+```
+CircularGradientButton(
+                 child: Icon(Icons.gradient),
+                 callback: (){},
+                 gradient: Gradients.rainbowBlue,
+           ),
+
+```
+
+most parameters are the same as `FloatingActionButton`.
 
 
 
@@ -55,28 +76,7 @@ GradientText('Hello',
              style: TextStyle(fontSize: 40.0,),);
 ```
 
-other parameters are the same as the `Text`.
-
-
-
-### `CircularGradientButton`
-
-currently, you need to wrap `GradientButton` inside `Center`
-
-
-```
-Center(
-   child: CircularGradientButton(
-                 child: Icon(Icons.gradient),
-                 callback: (){},
-                 gradient: Gradients.rainbowBlue,
-           ),
-)
-
-```
-
-other parameters are the same as `FloatingActionButton`.
-
+all parameters are the same as the `Text`.
 
 
 

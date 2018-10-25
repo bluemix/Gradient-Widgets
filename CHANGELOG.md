@@ -3,6 +3,8 @@
 ## 0.2.0
 
 - adding GradientCard
+- enhancing README.md
+- enhancing the example
 
 ## 0.1.0
 

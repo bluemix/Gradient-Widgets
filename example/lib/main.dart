@@ -1,21 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
 
-List<LinearGradient> gradients = [
-  Gradients.hotLinear,
-  Gradients.jShine,
-  Gradients.aliHussien,
-  Gradients.rainbowBlue,
-  Gradients.ali,
-  Gradients.cosmicFusion,
-  Gradients.backToFuture,
-  Gradients.blush,
-  Gradients.byDesign,
-  Gradients.coldLinear,
-  Gradients.haze,
-  Gradients.hersheys,
-  Gradients.taitanum,
-  Gradients.tameer,
+class NamedGradient {
+  NamedGradient(this.gradient, this.name);
+
+  LinearGradient gradient;
+  String name;
+}
+
+List<NamedGradient> gradients = [
+  NamedGradient(Gradients.hotLinear, 'Hot Linear'),
+  NamedGradient(Gradients.jShine, 'J Shine'),
+  NamedGradient(Gradients.aliHussien, 'Ali Hussien'),
+  NamedGradient(Gradients.rainbowBlue, 'Rainbow'),
+  NamedGradient(Gradients.ali, 'Ali'),
+  NamedGradient(Gradients.cosmicFusion, 'Cosmic Fusion'),
+  NamedGradient(Gradients.backToFuture, 'Back to Future'),
+  NamedGradient(Gradients.blush, 'Blush'),
+  NamedGradient(Gradients.byDesign, 'By Design'),
+  NamedGradient(Gradients.coldLinear, 'Cold Linear'),
+  NamedGradient(Gradients.haze, 'Haze'),
+  NamedGradient(Gradients.hersheys, 'Hersheys'),
+  NamedGradient(Gradients.tameer, 'Tameer'),
+  NamedGradient(Gradients.taitanum, 'Taitanum'),
+  NamedGradient(Gradients.deepSpace, 'Deep Space'),
 ];
 
 void main() => runApp(new MyApp());
@@ -70,6 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
+          brightness: Brightness.light,
           backgroundColor: Colors.transparent,
           centerTitle: true,
           elevation: 0.0,
@@ -88,12 +97,12 @@ class _MyHomePageState extends State<MyHomePage> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: gradients
-                    .map((gradient) => Padding(
+                    .map((namedGradient) => Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: GradientText(
                             'Hello',
                             shaderRect: Rect.fromLTWH(0.0, 0.0, 50.0, 50.0),
-                            gradient: gradient,
+                            gradient: namedGradient.gradient,
                             style: TextStyle(
                               fontSize: 40.0,
                               fontWeight: FontWeight.bold,
@@ -111,15 +120,13 @@ class _MyHomePageState extends State<MyHomePage> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: gradients
-                    .map((gradient) => Padding(
+                    .map((namedGradient) => Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Center(
-                            child: GradientButton(
-                              child: Text('Gradient'),
-                              callback: () => print(''),
-                              increaseWidthBy: 20.0,
-                              gradient: gradient,
-                            ),
+                          child: GradientButton(
+                            child: Text('Gradient'),
+                            callback: () => print(''),
+                            increaseWidthBy: 20.0,
+                            gradient: namedGradient.gradient,
                           ),
                         ))
                     .toList(),
@@ -131,40 +138,50 @@ class _MyHomePageState extends State<MyHomePage> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: gradients
-                    .map((gradient) => Padding(
+                    .map((namedGradient) => Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Center(
-                            child: CircularGradientButton(
-                              child: Icon(Icons.gradient),
-                              callback: () => print(''),
-                              increaseWidthBy: 20.0,
-                              gradient: gradient,
-                            ),
+                          child: CircularGradientButton(
+                            child: Icon(Icons.gradient),
+                            callback: () => print(''),
+                            gradient: namedGradient.gradient,
                           ),
                         ))
                     .toList(),
               ),
             ),
+
             _divider('GradientCard'),
             SizedBox(
-              height: 80.0,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: gradients
-                    .map((gradient) => Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Center(
-                            child: Container(
-                              height: 65.0,
-                              width: 65.0,
-//                              child: Center(child: Text('Hello'),),
-                              child: GradientCard(
-                                gradient: gradient,
-                              ),
-                            ),
+              height: 70.0 * (gradients.length / 3),
+              child: GridView.count(
+                physics: ScrollPhysics(),
+                childAspectRatio: 0.7,
+                crossAxisCount: 5,
+                crossAxisSpacing: 10.0,
+                children: List.generate(gradients.length, (index) {
+                  return Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 65.0,
+                          width: 65.0,
+                          child: GradientCard(
+                            gradient: gradients[index].gradient,
                           ),
-                        ))
-                    .toList(),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Text(gradients[index].name, textAlign: TextAlign.start,),
+                          ),
+                        )
+                      ],
+                    ),
+                  );
+                }),
               ),
             ),
             Divider(

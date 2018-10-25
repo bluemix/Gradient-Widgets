@@ -1,5 +1,8 @@
 import 'package:flutter/widgets.dart';
 
+
+
+// taken from https://uigradients.com
 class Gradients {
   static AlignmentGeometry _beginAlignment = Alignment.topLeft;
   static AlignmentGeometry _endAlignment = Alignment.bottomRight;
@@ -58,5 +61,10 @@ class Gradients {
   static LinearGradient coldLinear = buildGradient(_beginAlignment, _endAlignment, const [
     Color(0xfff20BDFF),
     Color(0xffA5FECB),
+  ]);
+
+  static LinearGradient deepSpace = buildGradient(_beginAlignment, _endAlignment, const [
+    Color(0xff000000),
+    Color(0xff434343),
   ]);
 }
