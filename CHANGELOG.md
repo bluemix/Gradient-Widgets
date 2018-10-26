@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.2
+
+- formatting dart files
+- enhancing package description
+
 ## 0.2.1
 
 - updating the package link to refer to GitHub
