@@ -7,7 +7,7 @@
 
 ## Gradient Widgets
 
-A minimal set of Flutter widgets wrapped with gradients.
+A minimal set of Flutter widgets encased with beautiful gradients.
 
 You can use them when your UI needs user attention/focus,
 , e.g., login or send actions, or important shopping item title (see [Gradient Screens](https://github.com/bluemix/Gradient-Screens) to get the idea 😉)

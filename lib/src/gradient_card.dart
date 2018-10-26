@@ -5,8 +5,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-
-
 class GradientCard extends StatelessWidget {
   /// Creates a material design card.
   ///
@@ -30,25 +28,27 @@ class GradientCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
 //    var shape = RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0));
     return Semantics(
       container: semanticContainer,
       explicitChildNodes: !semanticContainer,
       child: Container(
         margin: margin ?? const EdgeInsets.all(4.0),
-        decoration: shape ?? ShapeDecoration(
-            shape: shape ?? const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(4.0)),
-            ),
-            gradient: gradient),
+        decoration: shape ??
+            ShapeDecoration(
+                shape: shape ??
+                    const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                    ),
+                gradient: gradient),
         child: Material(
           type: MaterialType.card,
           color: Colors.transparent,
           elevation: 0.0,
-          shape: shape ?? const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(4.0)),
-          ),
+          shape: shape ??
+              const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(4.0)),
+              ),
           clipBehavior: clipBehavior,
           child: child,
         ),

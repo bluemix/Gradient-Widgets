@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:gradient_widgets/src/common.dart';
 
 class CircularGradientButton extends StatelessWidget {
-  CircularGradientButton({@required this.gradient,
-    @required this.child,
-    @required this.callback,
-    this.increaseHeightBy = 30.0,
-    this.increaseWidthBy = 0.0,
-    this.elevation = 2.0,
-    this.materialTapTargetSize,
-    this.heroTag,
-    this.tooltip
-  });
+  CircularGradientButton(
+      {@required this.gradient,
+      @required this.child,
+      @required this.callback,
+      this.increaseHeightBy = 30.0,
+      this.increaseWidthBy = 0.0,
+      this.elevation = 2.0,
+      this.materialTapTargetSize,
+      this.heroTag,
+      this.tooltip});
 
   final Widget child;
   final Gradient gradient;
@@ -33,7 +33,8 @@ class CircularGradientButton extends StatelessWidget {
       heroTag: heroTag,
       materialTapTargetSize: materialTapTargetSize,
       tooltip: tooltip,
-      child: gradientContainer(context, gradient, increaseHeightBy, increaseWidthBy, child),
+      child: gradientContainer(
+          context, gradient, increaseHeightBy, increaseWidthBy, child),
     );
   }
 }

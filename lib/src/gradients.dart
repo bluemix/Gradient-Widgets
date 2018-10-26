@@ -1,7 +1,5 @@
 import 'package:flutter/widgets.dart';
 
-
-
 // taken from https://uigradients.com
 class Gradients {
   static AlignmentGeometry _beginAlignment = Alignment.topLeft;
