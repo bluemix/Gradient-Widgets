@@ -1,8 +1,8 @@
 
 [![Pub](https://img.shields.io/pub/v/gradient_widgets.svg)](https://pub.dartlang.org/packages/gradient_widgets)
 
-<img src="art/screenshot3_cropped_resized.png" width="600" alt="Gradient Widgets"/>
-<!--![Gradient Widgets](art/screenshot3_cropped_resized.png  | width=100)-->
+
+![Gradient Widgets](art/screenshot3_cropped_resized.png | width=200)
 
 
 ## Installation
