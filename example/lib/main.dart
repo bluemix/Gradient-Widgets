@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
 
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Flutter Gradient Widgets Demo',
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -52,7 +54,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Widget _divider(String title) {
+  Widget _divider(String title, {Widget child}) {
     return Row(
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
@@ -65,10 +67,11 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         Expanded(
           flex: 1,
-          child: Container(
-            height: 1.0,
-            color: Color(0xffFFD189),
-          ),
+          child: child ??
+              Container(
+                height: 1.0,
+                color: Color(0xffFFD189),
+              ),
         ),
       ],
     );
@@ -91,6 +94,9 @@ class _MyHomePageState extends State<MyHomePage> {
         body: ListView(
           scrollDirection: Axis.vertical,
           children: <Widget>[
+//            GradientProgressIndicator(gradient: Gradients.aliHussien, value: 0.9,),
+//            GradientProgressIndicator(gradient: Gradients.byDesign,),
+
             _divider('GradientText'),
             SizedBox(
               height: 54.0,
@@ -149,10 +155,30 @@ class _MyHomePageState extends State<MyHomePage> {
                     .toList(),
               ),
             ),
-
+            _divider('GradientProgressIndicator'),
+            _divider('Indeterminate',
+                child: GradientProgressIndicator(
+                  gradient: gradients[4].gradient,
+                )),
+            SizedBox(
+              height: 42.0,
+              child: ListView(
+                children: gradients
+                    .take(1)
+                    .where((gradient) => gradient.gradient.colors.length == 2)
+                    .map((namedGradient) => Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
+                          child: _divider('  Determinate', child: GradientProgressIndicator(
+                            gradient: namedGradient.gradient,
+                            value: Random().nextDouble(),
+                          )),
+                        ))
+                    .toList(),
+              ),
+            ),
             _divider('GradientCard'),
             SizedBox(
-              height: 70.0 * (gradients.length / 3),
+              height: 65.0 * (gradients.length / 3),
               child: GridView.count(
                 physics: ScrollPhysics(),
                 childAspectRatio: 0.7,
@@ -175,7 +201,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         Expanded(
                           child: Padding(
                             padding: const EdgeInsets.only(left: 8.0),
-                            child: Text(gradients[index].name, textAlign: TextAlign.start,),
+                            child: Text(
+                              gradients[index].name,
+                              textAlign: TextAlign.start,
+                            ),
                           ),
                         )
                       ],
@@ -184,6 +213,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 }),
               ),
             ),
+
             Divider(
               color: Colors.blueGrey,
             ),

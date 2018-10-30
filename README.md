@@ -1,7 +1,21 @@
 
 [![Pub](https://img.shields.io/pub/v/gradient_widgets.svg)](https://pub.dartlang.org/packages/gradient_widgets)
 
-![Gradient Widgets](art/screenshot2_cropped_resized.png)
+<img src="art/screenshot3_cropped_resized.png" width="600" alt="Gradient Widgets"/>
+<!--![Gradient Widgets](art/screenshot3_cropped_resized.png  | width=100)-->
+
+
+## Installation
+In your `pubspec.yaml` root add:
+
+```yaml
+dependencies:
+  gradient_widgets: ^0.3.0
+```
+
+then,
+
+`import 'package:gradient_widgets/gradient_widgets.dart';`
 
 
 
@@ -21,7 +35,9 @@ You can use them when your UI needs user attention/focus,
 
 ☑️ CircularGradientButton
 
-◻️ ProgressBar
+☑️ GradientProgressIndicator
+
+◻️ CircularGradientProgressIndicator
 
 
 
@@ -35,6 +51,31 @@ GradientCard(gradient: Gradients.tameer);
 ```
 
 most parameters are the same as the `Card`.
+
+
+
+### `GradientProgressIndicator`
+
+<img src="art/GradientProgressIndicators.gif" alt="Gradient Widgets"/>
+
+> must be gradient.colors.length = 2
+
+indeterminate
+```
+GradientProgressIndicator(
+                  gradient: Gradients.rainbowBlue,
+                );
+```
+
+
+determinate
+```
+GradientProgressIndicator(
+                  gradient: Gradients.rainbowBlue,
+                  value: 0.65,
+                );
+```
+
 
 
 ### `GradientButton`

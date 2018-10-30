@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.0
+
+- GradientProgressIndicator
+
 ## 0.2.2
 
 - formatting dart files
