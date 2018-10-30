@@ -2,7 +2,7 @@
 [![Pub](https://img.shields.io/pub/v/gradient_widgets.svg)](https://pub.dartlang.org/packages/gradient_widgets)
 
 
-![Gradient Widgets](art/screenshot3_cropped_resized.png | width=200)
+![Gradient Widgets](art/screenshot3_cropped_resized.png)
 
 
 ## Installation
