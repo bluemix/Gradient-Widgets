@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.1
+
+- fixing compiler warning about setting 0.0 to doubles
+
 ## 0.3.0
 
 - GradientProgressIndicator

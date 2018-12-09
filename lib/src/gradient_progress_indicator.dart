@@ -7,7 +7,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-
 const double _kLinearProgressIndicatorHeight = 6.0;
 const int _kIndeterminateLinearDuration = 1800;
 
@@ -31,7 +30,7 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator> w
   Animation<double> pAnimation;
   List<Color> colors = [];
 
-  double prevValue = 0;
+  double prevValue = 0.0;
 
   CurvedAnimation curvedAnimation;
 
@@ -44,14 +43,12 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator> w
 
     _setColorsArray();
 
-
     _controller = AnimationController(
       duration: const Duration(milliseconds: _kIndeterminateLinearDuration),
       vsync: this,
     );
 
     _setControllerListener();
-
 
     curvedAnimation = new CurvedAnimation(parent: _controller, curve: Curves.fastOutSlowIn);
     pAnimation = new Tween<double>(begin: prevValue, end: widget.value ?? 1.0).animate(curvedAnimation);
@@ -88,9 +85,7 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator> w
 
     if (widget.value == null && !_controller.isAnimating) {
       _controller.reset();
-    }
-
-    else if (widget.value != null) {
+    } else if (widget.value != null) {
       pAnimation = new Tween<double>(begin: prevValue, end: widget.value).animate(curvedAnimation);
       _controller
         ..reset()
