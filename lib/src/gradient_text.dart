@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:gradient_widgets/src/gradient_widget.dart';
 
 class GradientText extends StatelessWidget {
   GradientText(
     this.data, {
     @required this.gradient,
-    @required this.shaderRect,
+    this.shaderRect,
     @required this.style,
     this.key,
     this.textAlign,
@@ -33,19 +34,22 @@ class GradientText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      data,
+    return GradientWidget(
       key: key,
-      style: style.copyWith(
-          foreground: Paint()..shader = gradient.createShader(shaderRect ?? Rect.fromLTWH(0.0, 0.0, 50.0, 50.0))),
-      textAlign: textAlign,
-      textDirection: textDirection,
-      locale: locale,
-      softWrap: softWrap,
-      overflow: overflow,
-      textScaleFactor: textScaleFactor,
-      maxLines: maxLines,
-      semanticsLabel: semanticsLabel,
+      gradient: gradient,
+      forcedRect: shaderRect,
+      child: Text(
+        data,
+        style: style,
+        textAlign: textAlign,
+        textDirection: textDirection,
+        locale: locale,
+        softWrap: softWrap,
+        overflow: overflow,
+        textScaleFactor: textScaleFactor,
+        maxLines: maxLines,
+        semanticsLabel: semanticsLabel,
+      ),
     );
   }
 }

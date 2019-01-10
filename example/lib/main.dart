@@ -107,13 +107,10 @@ class _MyHomePageState extends State<MyHomePage> {
                           padding: const EdgeInsets.all(8.0),
                           child: GradientText(
                             'Hello',
-                            shaderRect: Rect.fromLTWH(0.0, 0.0, 50.0, 50.0),
                             gradient: namedGradient.gradient,
                             style: TextStyle(
                               fontSize: 40.0,
                               fontWeight: FontWeight.bold,
-//                                foreground: Paint()
-//                                  ..shader = gradient.createShader(Rect.fromLTWH(0.0, 0.0, 50.0, 50.0))
                             ),
                           ),
                         ))
