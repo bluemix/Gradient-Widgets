@@ -112,7 +112,6 @@ most parameters are the same as `FloatingActionButton`.
 
 ```
 GradientText('Hello',
-             shaderRect: Rect.fromLTWH(0.0, 0.0, 50.0, 50.0),
              gradient: Gradients.hotLinear,
              style: TextStyle(fontSize: 40.0,),);
 ```
