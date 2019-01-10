@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gradient_widgets/src/gradient_widget.dart';
 
 class GradientText extends StatelessWidget {
   GradientText(
@@ -34,10 +33,12 @@ class GradientText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GradientWidget(
-      key: key,
-      gradient: gradient,
-      forcedRect: shaderRect,
+    return ShaderMask(
+      // Regarding the blend mode: The source is the gradient to draw, and the
+      // destination is the text. With srcIn the gradient is drawn with the
+      // shape of the text.
+      blendMode: BlendMode.srcIn,
+      shaderCallback: (rect) => gradient.createShader(shaderRect ?? rect),
       child: Text(
         data,
         style: style,
