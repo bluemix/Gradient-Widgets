@@ -4,7 +4,7 @@ class GradientText extends StatelessWidget {
   GradientText(
     this.data, {
     @required this.gradient,
-    @required this.shaderRect,
+    this.shaderRect,
     @required this.style,
     this.key,
     this.textAlign,
@@ -33,19 +33,24 @@ class GradientText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      data,
-      key: key,
-      style: style.copyWith(
-          foreground: Paint()..shader = gradient.createShader(shaderRect ?? Rect.fromLTWH(0.0, 0.0, 50.0, 50.0))),
-      textAlign: textAlign,
-      textDirection: textDirection,
-      locale: locale,
-      softWrap: softWrap,
-      overflow: overflow,
-      textScaleFactor: textScaleFactor,
-      maxLines: maxLines,
-      semanticsLabel: semanticsLabel,
+    return ShaderMask(
+      // Regarding the blend mode: The source is the gradient to draw, and the
+      // destination is the text. With srcIn the gradient is drawn with the
+      // shape of the text.
+      blendMode: BlendMode.srcIn,
+      shaderCallback: (rect) => gradient.createShader(shaderRect ?? rect),
+      child: Text(
+        data,
+        style: style,
+        textAlign: textAlign,
+        textDirection: textDirection,
+        locale: locale,
+        softWrap: softWrap,
+        overflow: overflow,
+        textScaleFactor: textScaleFactor,
+        maxLines: maxLines,
+        semanticsLabel: semanticsLabel,
+      ),
     );
   }
 }
