@@ -69,7 +69,7 @@ GradientProgressIndicator(gradient: Gradients.rainbowBlue,);
 
 
 determinate
-```
+```dart
 GradientProgressIndicator(
   gradient: Gradients.rainbowBlue,
   value: 0.65,
@@ -80,7 +80,7 @@ GradientProgressIndicator(
 
 ### Normal Button + Gradient
 
-```
+```dart
 GradientButton(
   child: Text('Gradient'),
   callback: () {},
@@ -95,7 +95,7 @@ most parameters are the same as any `*Button`.
 ### Circular Button + Gradient
 
 
-```
+```dart
 CircularGradientButton(
   child: Icon(Icons.gradient),
   callback: (){},
@@ -110,7 +110,7 @@ most parameters are the same as `FloatingActionButton`.
 
 ### Text + Gradient
 
-```
+```dart
 GradientText(
   'Hello',
   shaderRect: Rect.fromLTWH(0.0, 0.0, 50.0, 50.0),
