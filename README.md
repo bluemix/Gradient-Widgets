@@ -46,7 +46,7 @@ You can use them when your UI needs user attention/focus,
 ## Usage
 
 
-### `GradientCard`
+### Card + Gradient
 
 ```
 GradientCard(gradient: Gradients.tameer);
@@ -56,7 +56,7 @@ most parameters are the same as the `Card`.
 
 
 
-### `GradientProgressIndicator`
+### Progress Indicator + Gradient
 
 <img src="art/GradientProgressIndicators.gif" alt="Gradient Widgets"/>
 
@@ -78,7 +78,7 @@ GradientProgressIndicator(
 
 
 
-### `GradientButton`
+### Normal Button + Gradient
 
 ```
 GradientButton(
@@ -92,7 +92,7 @@ most parameters are the same as any `*Button`.
 
 
 
-### `CircularGradientButton`
+### Circular Button + Gradient
 
 
 ```
@@ -108,7 +108,7 @@ most parameters are the same as `FloatingActionButton`.
 
 
 
-### `GradientText`
+### Text + Gradient
 
 ```
 GradientText(
