@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_widgets/src/common.dart';
 
-class CircularGradientButton extends StatelessWidget {
+class CircularGradientButton extends StatefulWidget {
   CircularGradientButton(
       {@required this.gradient,
       @required this.child,
@@ -25,16 +25,88 @@ class CircularGradientButton extends StatelessWidget {
   final MaterialTapTargetSize materialTapTargetSize;
 
   @override
+  _CircularGradientButtonState createState() => _CircularGradientButtonState();
+}
+
+class _CircularGradientButtonState extends State<CircularGradientButton> with SingleTickerProviderStateMixin {
+
+  Animation<double> _opacity;
+  AnimationController animationController;
+  bool isTappedUp = false;
+  double elevation;
+
+  @override
+  void initState() {
+    animationController = AnimationController(duration: Duration(milliseconds: 200), vsync: this);
+    _opacity = CurvedAnimation(parent: animationController, curve: Curves.fastOutSlowIn);
+
+    animationController.addStatusListener((status) {
+      if (animationController.isCompleted && isTappedUp) {
+        animationController.reverse();
+      }
+    });
+
+    super.initState();
+  }
+
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+  }
+
+  dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
+
+  void tapDown() {
+    elevation = 0.0;
+    animationController.forward();
+    isTappedUp = false;
+    setState(() {});
+  }
+
+  void tapUp() {
+    elevation = widget.elevation * 2;
+    if (!animationController.isAnimating) {
+      animationController.reverse();
+    }
+    isTappedUp = true;
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
-      elevation: elevation,
-      onPressed: callback,
-      clipBehavior: Clip.antiAlias,
-      heroTag: heroTag,
-      materialTapTargetSize: materialTapTargetSize,
-      tooltip: tooltip,
-      child: gradientContainer(
-          context, gradient, increaseHeightBy, increaseWidthBy, child),
-    );
+    return GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () => widget.callback(),
+        onTapDown: (TapDownDetails details) => tapDown(),
+        onTapCancel: () => tapUp(),
+        onTapUp: (TapUpDetails details) => tapUp(),
+        child: FloatingActionButton(
+          elevation: elevation,
+          onPressed: null,
+          clipBehavior: Clip.antiAlias,
+          heroTag: widget.heroTag,
+          materialTapTargetSize: widget.materialTapTargetSize,
+          tooltip: widget.tooltip,
+          child: Stack(
+            children: [
+              gradientContainer(
+                  context, widget.gradient, widget.increaseHeightBy, widget.increaseWidthBy, widget.child),
+              FadeTransition(
+                opacity: _opacity,
+                child: Container(
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [Colors.transparent, Colors.black38])),
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 }

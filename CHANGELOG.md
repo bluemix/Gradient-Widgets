@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.0
+
+- gradient buttons (CircularGradientButton and GradientButton) reacting (animating) to tap gestures (normal, up and down) 
+
 ## 0.3.1
 
 - fixing compiler warning about setting 0.0 to doubles

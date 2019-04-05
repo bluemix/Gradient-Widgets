@@ -29,11 +29,52 @@ class GradientButton extends StatefulWidget {
 
   @override
   GradientButtonState createState() {
-    return new GradientButtonState();
+    return GradientButtonState();
   }
 }
 
-class GradientButtonState extends State<GradientButton> {
+class GradientButtonState extends State<GradientButton> with SingleTickerProviderStateMixin {
+  Animation<double> _opacity;
+  AnimationController animationController;
+  bool isTappedUp = false;
+  double elevation;
+
+  Gradient gradient;
+  VoidCallback callback;
+
+  @override
+  void initState() {
+    animationController = AnimationController(duration: Duration(milliseconds: 200), vsync: this);
+
+    _opacity = Tween<double>(begin: 1.0, end: 0.8)
+        .animate(CurvedAnimation(parent: animationController, curve: Curves.fastOutSlowIn));
+
+    elevation = widget.elevation;
+    animationController.addStatusListener((status) {
+      if (animationController.isCompleted && isTappedUp) {
+        animationController.reverse();
+      }
+    });
+
+    super.initState();
+  }
+
+  void tapDown() {
+    elevation = 0.0;
+    animationController.forward();
+    isTappedUp = false;
+    setState(() {});
+  }
+
+  void tapUp() {
+    elevation = widget.elevation * 2;
+    if (!animationController.isAnimating) {
+      animationController.reverse();
+    }
+    isTappedUp = true;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
@@ -42,16 +83,10 @@ class GradientButtonState extends State<GradientButton> {
     ShapeBorder shapeCopy = widget.shape ?? RoundedRectangleBorder(borderRadius: borderRadiusCopy);
     TextStyle textStyleCopy = widget.textStyle ?? theme.textTheme.button.copyWith(color: Colors.white);
 
-    Gradient gradient;
-    double elevation;
-    VoidCallback callback;
-
     if (widget.isEnabled) {
       gradient = widget.gradient;
-      elevation = widget.elevation;
       callback = widget.callback;
     } else {
-      elevation = 0.0;
       callback = null;
       gradient = widget.disabledGradient ??
           LinearGradient(
@@ -63,16 +98,28 @@ class GradientButtonState extends State<GradientButton> {
           );
     }
 
-    return Center(
-      child: RawMaterialButton(
-        fillColor: Colors.transparent,
-        padding: const EdgeInsets.all(0.0),
-        shape: shapeCopy,
-        elevation: elevation,
-        textStyle: textStyleCopy,
-        onPressed: callback,
-        clipBehavior: Clip.antiAlias,
-        child: gradientContainer(context, gradient, widget.increaseHeightBy, widget.increaseWidthBy, widget.child),
+    return GestureDetector(
+      onTapDown: (details) => tapDown(),
+      onTapUp: (details) => tapUp(),
+      onTapCancel: () => tapUp(),
+      child: Center(
+        child: RawMaterialButton(
+          fillColor: Colors.transparent,
+          padding: const EdgeInsets.all(0.0),
+          shape: shapeCopy,
+          elevation: elevation,
+          textStyle: textStyleCopy,
+          onPressed: () {
+            tapDown();
+            tapUp();
+            callback();
+          },
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          child: FadeTransition(
+            opacity: _opacity,
+            child: gradientContainer(context, gradient, widget.increaseHeightBy, widget.increaseWidthBy, widget.child),
+          ),
+        ),
       ),
     );
   }

@@ -130,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           padding: const EdgeInsets.all(8.0),
                           child: GradientButton(
                             child: Text('Gradient'),
-                            callback: () => print(''),
+                            callback: () => print('${namedGradient.name} clicked'),
                             increaseWidthBy: 20.0,
                             gradient: namedGradient.gradient,
                           ),
@@ -148,7 +148,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           padding: const EdgeInsets.all(8.0),
                           child: CircularGradientButton(
                             child: Icon(Icons.gradient),
-                            callback: () => print(''),
+                            callback: () => print('${namedGradient.name} clicked'),
                             gradient: namedGradient.gradient,
                           ),
                         ))

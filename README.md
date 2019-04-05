@@ -10,7 +10,7 @@ In your `pubspec.yaml` root add:
 
 ```yaml
 dependencies:
-  gradient_widgets: ^0.3.1
+  gradient_widgets: ^0.4.0
 ```
 
 then,
@@ -39,6 +39,8 @@ You can use them when your UI needs user attention/focus,
 
 ◻️ CircularGradientProgressIndicator
 
+◻️ GradientAppBar
+
 
 
 ## Usage
@@ -62,18 +64,16 @@ most parameters are the same as the `Card`.
 
 indeterminate
 ```
-GradientProgressIndicator(
-                  gradient: Gradients.rainbowBlue,
-                );
+GradientProgressIndicator(gradient: Gradients.rainbowBlue,);
 ```
 
 
 determinate
 ```
 GradientProgressIndicator(
-                  gradient: Gradients.rainbowBlue,
-                  value: 0.65,
-                );
+  gradient: Gradients.rainbowBlue,
+  value: 0.65,
+);
 ```
 
 
@@ -82,10 +82,10 @@ GradientProgressIndicator(
 
 ```
 GradientButton(
-                 child: Text('Gradient'),
-                 callback: () {},
-                 gradient: Gradients.backToFuture,
-           ),
+  child: Text('Gradient'),
+  callback: () {},
+  gradient: Gradients.backToFuture,
+),
 
 ```
 most parameters are the same as any `*Button`.
@@ -97,10 +97,10 @@ most parameters are the same as any `*Button`.
 
 ```
 CircularGradientButton(
-                 child: Icon(Icons.gradient),
-                 callback: (){},
-                 gradient: Gradients.rainbowBlue,
-           ),
+  child: Icon(Icons.gradient),
+  callback: (){},
+  gradient: Gradients.rainbowBlue,
+),
 
 ```
 
@@ -111,17 +111,20 @@ most parameters are the same as `FloatingActionButton`.
 ### `GradientText`
 
 ```
-GradientText('Hello',
-             shaderRect: Rect.fromLTWH(0.0, 0.0, 50.0, 50.0),
-             gradient: Gradients.hotLinear,
-             style: TextStyle(fontSize: 40.0,),);
+GradientText(
+  'Hello',
+  shaderRect: Rect.fromLTWH(0.0, 0.0, 50.0, 50.0),
+  gradient: Gradients.hotLinear,
+  style: TextStyle(fontSize: 40.0,),
+),
 ```
 
 all parameters are the same as the `Text`.
 
 
+-----------
 
-## Getting Started
+#### Getting Started
 
 For help getting started with Flutter, view our online [documentation](https://flutter.io/).
 
