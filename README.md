@@ -10,7 +10,7 @@ In your `pubspec.yaml` root add:
 
 ```yaml
 dependencies:
-  gradient_widgets: ^0.4.0
+  gradient_widgets: ^0.4.1
 ```
 
 then,
