@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.1
+
+- CircularGradientButton elevation was not initialized from initState
+- GradientButton animation controller was not disposed from onDispose
+
 ## 0.4.0
 
 - gradient buttons (CircularGradientButton and GradientButton) reacting (animating) to tap gestures (normal, up and down) 

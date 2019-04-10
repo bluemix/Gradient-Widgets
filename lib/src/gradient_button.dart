@@ -75,6 +75,13 @@ class GradientButtonState extends State<GradientButton> with SingleTickerProvide
     setState(() {});
   }
 
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);

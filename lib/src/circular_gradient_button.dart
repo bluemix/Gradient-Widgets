@@ -40,6 +40,7 @@ class _CircularGradientButtonState extends State<CircularGradientButton> with Si
     animationController = AnimationController(duration: Duration(milliseconds: 200), vsync: this);
     _opacity = CurvedAnimation(parent: animationController, curve: Curves.fastOutSlowIn);
 
+    elevation = widget.elevation;
     animationController.addStatusListener((status) {
       if (animationController.isCompleted && isTappedUp) {
         animationController.reverse();
