@@ -30,11 +30,6 @@ You can use them when your UI needs user attention/focus,
 ◻️ GradientAppBar
 
 
-
-
-
-
-
 ## Installation
 In your `pubspec.yaml` root add:
 
@@ -45,7 +40,9 @@ dependencies:
 
 then,
 
-`import 'package:gradient_widgets/gradient_widgets.dart';`
+```dart
+import 'package:gradient_widgets/gradient_widgets.dart';
+```
 
 
 ## Usage
@@ -72,7 +69,7 @@ most parameters are the same as the `Card`.
 > must be gradient.colors.length = 2
 
 indeterminate
-```
+```dart
 GradientProgressIndicator(gradient: Gradients.rainbowBlue,);
 ```
 
