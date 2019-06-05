@@ -2,7 +2,9 @@
 [![Pub](https://img.shields.io/pub/v/gradient_widgets.svg)](https://pub.dartlang.org/packages/gradient_widgets)
 
 
-![Gradient Widgets](art/screenshot3_cropped_resized.png)
+<img src="art/screenshot-gradient-widgets.png" width="400" alt="Gradient Widgets"/>
+
+
 
 
 ## Installation
@@ -10,7 +12,7 @@ In your `pubspec.yaml` root add:
 
 ```yaml
 dependencies:
-  gradient_widgets: ^0.4.1
+  gradient_widgets: ^0.5.0
 ```
 
 then,
@@ -18,8 +20,9 @@ then,
 `import 'package:gradient_widgets/gradient_widgets.dart';`
 
 
-
 ## Gradient Widgets
+
+> As of ^0.5.0, `shadowColor` is available for gradient buttons and cards 
 
 A minimal set of Flutter widgets encased with beautiful gradients.
 
@@ -33,7 +36,7 @@ You can use them when your UI needs user attention/focus,
 
 ☑️ GradientButton
 
-☑️ CircularGradientButton
+☑️ CircularGradientButton + Shadow Color
 
 ☑️ GradientProgressIndicator
 
@@ -49,7 +52,11 @@ You can use them when your UI needs user attention/focus,
 ### Card + Gradient
 
 ```
-GradientCard(gradient: Gradients.tameer);
+GradientCard(
+    gradient: Gradients.tameer,
+    shadowColor: Gradients.tameer.colors.last.withOpacity(0.25),
+    elevation: 8,
+);
 ```
 
 most parameters are the same as the `Card`.
@@ -85,6 +92,7 @@ GradientButton(
   child: Text('Gradient'),
   callback: () {},
   gradient: Gradients.backToFuture,
+  shadowColor: Gradients.backToFuture.colors.last.withOpacity(0.25),
 ),
 
 ```
@@ -100,6 +108,7 @@ CircularGradientButton(
   child: Icon(Icons.gradient),
   callback: (){},
   gradient: Gradients.rainbowBlue,
+  shadowColor: Gradients.rainbowBlue.colors.last.withOpacity(0.5),
 ),
 
 ```

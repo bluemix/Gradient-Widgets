@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.0
+
+- `shadowColor` for `GradientCard`, `GradientButton` and `CircularGradientButton`
+- All gradient widgets now have default gradients
+- [Fixing GradientCard's shape bug](https://github.com/bluemix/Gradient-Widgets/issues/6)
+
 ## 0.4.1
 
 - CircularGradientButton elevation was not initialized from initState

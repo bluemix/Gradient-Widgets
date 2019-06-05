@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../gradient_widgets.dart';
+
 class GradientText extends StatelessWidget {
   GradientText(
     this.data, {
-    @required this.gradient,
+    this.gradient = Gradients.hotLinear,
     this.shaderRect,
     @required this.style,
     this.key,

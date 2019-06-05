@@ -28,18 +28,18 @@ List<NamedGradient> gradients = [
   NamedGradient(Gradients.deepSpace, 'Deep Space'),
 ];
 
-void main() => runApp(new MyApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       title: 'Flutter Gradient Widgets Demo',
       debugShowCheckedModeBanner: true,
-      theme: new ThemeData(
+      theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: new MyHomePage(title: 'Gradient Widgets'),
+      home: MyHomePage(title: 'Gradient Widgets'),
     );
   }
 }
@@ -50,7 +50,7 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8),
           child: Text(
             title,
             style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w200),
@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
           flex: 1,
           child: child ??
               Container(
-                height: 1.0,
+                height: 1,
                 color: Color(0xffFFD189),
               ),
         ),
@@ -79,13 +79,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-        appBar: new AppBar(
+    return Scaffold(
+        appBar: AppBar(
           brightness: Brightness.light,
           backgroundColor: Colors.transparent,
           centerTitle: true,
-          elevation: 0.0,
-          title: new Text(
+          elevation: 0,
+          title: Text(
             widget.title,
             style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w300),
           ),
@@ -96,20 +96,19 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
 //            GradientProgressIndicator(gradient: Gradients.aliHussien, value: 0.9,),
 //            GradientProgressIndicator(gradient: Gradients.byDesign,),
-
             _divider('GradientText'),
             SizedBox(
-              height: 54.0,
+              height: 54,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: gradients
                     .map((namedGradient) => Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(8),
                           child: GradientText(
                             'Hello',
                             gradient: namedGradient.gradient,
                             style: TextStyle(
-                              fontSize: 40.0,
+                              fontSize: 40,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -119,17 +118,18 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             _divider('GradientButton'),
             SizedBox(
-              height: 80.0,
+              height: 80,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: gradients
                     .map((namedGradient) => Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(8),
                           child: GradientButton(
                             child: Text('Gradient'),
                             callback: () => print('${namedGradient.name} clicked'),
-                            increaseWidthBy: 20.0,
+                            increaseWidthBy: 20,
                             gradient: namedGradient.gradient,
+                            shadowColor: namedGradient.gradient.colors.last.withOpacity(0.25),
                           ),
                         ))
                     .toList(),
@@ -137,16 +137,18 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             _divider('CircularGradientButton'),
             SizedBox(
-              height: 80.0,
+              height: 80,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: gradients
                     .map((namedGradient) => Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(8),
                           child: CircularGradientButton(
                             child: Icon(Icons.gradient),
                             callback: () => print('${namedGradient.name} clicked'),
                             gradient: namedGradient.gradient,
+                            shadowColor: namedGradient.gradient.colors.last.withOpacity(0.5),
+                            elevation: 5,
                           ),
                         ))
                     .toList(),
@@ -158,13 +160,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   gradient: gradients[4].gradient,
                 )),
             SizedBox(
-              height: 42.0,
+              height: 42,
               child: ListView(
                 children: gradients
                     .take(1)
                     .where((gradient) => gradient.gradient.colors.length == 2)
                     .map((namedGradient) => Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                           child: _divider('  Determinate', child: GradientProgressIndicator(
                             gradient: namedGradient.gradient,
                             value: Random().nextDouble(),
@@ -175,12 +177,13 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             _divider('GradientCard'),
             SizedBox(
-              height: 65.0 * (gradients.length / 3),
+              height: 65 * (gradients.length / 3),
               child: GridView.count(
                 physics: ScrollPhysics(),
                 childAspectRatio: 0.7,
                 crossAxisCount: 5,
-                crossAxisSpacing: 10.0,
+                crossAxisSpacing: 10,
+                padding: const EdgeInsets.symmetric(horizontal: 8),
                 children: List.generate(gradients.length, (index) {
                   return Center(
                     child: Column(
@@ -189,15 +192,18 @@ class _MyHomePageState extends State<MyHomePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          height: 65.0,
-                          width: 65.0,
+                          height: 65,
+                          width: 65,
                           child: GradientCard(
                             gradient: gradients[index].gradient,
+                            elevation: 8,
+                            shadowColor: gradients[index].gradient.colors.last.withOpacity(0.25),
+                            margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 2),
                           ),
                         ),
                         Expanded(
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
+                            padding: const EdgeInsets.only(left: 8),
                             child: Text(
                               gradients[index].name,
                               textAlign: TextAlign.start,

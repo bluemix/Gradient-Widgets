@@ -8,8 +8,11 @@ class Gradients {
   static LinearGradient buildGradient(AlignmentGeometry begin, AlignmentGeometry end, List<Color> colors) =>
       LinearGradient(begin: begin, end: end, colors: colors);
 
-  static LinearGradient hotLinear =
-      buildGradient(_beginAlignment, _endAlignment, const [Color(0xffF55B9A), Color(0xffF9B16E)]);
+  static const hotLinear = LinearGradient(
+      colors: const [Color(0xffF55B9A), Color(0xffF9B16E)], begin: Alignment.centerLeft, end: Alignment.centerRight);
+
+  static LinearGradient coralCandyGradient =
+      buildGradient(_beginAlignment, _endAlignment, const [Color(0xffFFF0D1), Color(0xffFFB8C6)]);
 
   static LinearGradient serve =
       buildGradient(_beginAlignment, _endAlignment, const [Color(0xff485563), Color(0xff485563)]);

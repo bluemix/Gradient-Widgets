@@ -7,6 +7,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import '../gradient_widgets.dart';
+
 const double _kLinearProgressIndicatorHeight = 6.0;
 const int _kIndeterminateLinearDuration = 1800;
 
@@ -14,7 +16,7 @@ class GradientProgressIndicator extends StatefulWidget {
   GradientProgressIndicator({
     this.key,
     this.value,
-    this.gradient,
+    this.gradient = Gradients.hotLinear,
   });
 
   final Key key;
@@ -50,8 +52,8 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator> w
 
     _setControllerListener();
 
-    curvedAnimation = new CurvedAnimation(parent: _controller, curve: Curves.fastOutSlowIn);
-    pAnimation = new Tween<double>(begin: prevValue, end: widget.value ?? 1.0).animate(curvedAnimation);
+    curvedAnimation = CurvedAnimation(parent: _controller, curve: Curves.fastOutSlowIn);
+    pAnimation = Tween<double>(begin: prevValue, end: widget.value ?? 1.0).animate(curvedAnimation);
     prevValue = widget.value ?? 0;
 
     _controller.forward();
@@ -86,7 +88,7 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator> w
     if (widget.value == null && !_controller.isAnimating) {
       _controller.reset();
     } else if (widget.value != null) {
-      pAnimation = new Tween<double>(begin: prevValue, end: widget.value).animate(curvedAnimation);
+      pAnimation = Tween<double>(begin: prevValue, end: widget.value).animate(curvedAnimation);
       _controller
         ..reset()
         ..forward();

@@ -1,20 +1,43 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gradient_widgets/src/common.dart';
 
-class CircularGradientButton extends StatefulWidget {
+import '../gradient_widgets.dart';
+
+class CircularGradientButton extends GradientButton {
   CircularGradientButton(
-      {@required this.gradient,
+      {this.gradient = Gradients.hotLinear,
       @required this.child,
       @required this.callback,
-      this.increaseHeightBy = 30.0,
+      this.shadowColor = Colors.black45,
+      this.increaseHeightBy = 56.0,
       this.increaseWidthBy = 0.0,
-      this.elevation = 2.0,
+      this.elevation = 5.0,
       this.materialTapTargetSize,
       this.heroTag,
-      this.tooltip});
+      this.tooltip})
+      : super(
+            callback: callback,
+            child: child,
+            shadowColor: shadowColor,
+            gradient: gradient,
+            elevation: elevation,
+            increaseHeightBy: increaseHeightBy,
+            increaseWidthBy: increaseWidthBy,
+            heroTag: heroTag,
+            tooltip: tooltip,
+            materialTapTargetSize: materialTapTargetSize,
+            shape: CircleBorder(),
+//            shape: RoundedRectangleBorder(),
+            constraints: BoxConstraints.tightFor(
+              width: 56.0,
+              height: 56.0,
+            )
+  );
 
   final Widget child;
   final Gradient gradient;
+  final Color shadowColor;
+
   final VoidCallback callback;
   final double elevation;
   final double increaseHeightBy;
@@ -23,91 +46,4 @@ class CircularGradientButton extends StatefulWidget {
 
   final Object heroTag;
   final MaterialTapTargetSize materialTapTargetSize;
-
-  @override
-  _CircularGradientButtonState createState() => _CircularGradientButtonState();
-}
-
-class _CircularGradientButtonState extends State<CircularGradientButton> with SingleTickerProviderStateMixin {
-
-  Animation<double> _opacity;
-  AnimationController animationController;
-  bool isTappedUp = false;
-  double elevation;
-
-  @override
-  void initState() {
-    animationController = AnimationController(duration: Duration(milliseconds: 200), vsync: this);
-    _opacity = CurvedAnimation(parent: animationController, curve: Curves.fastOutSlowIn);
-
-    elevation = widget.elevation;
-    animationController.addStatusListener((status) {
-      if (animationController.isCompleted && isTappedUp) {
-        animationController.reverse();
-      }
-    });
-
-    super.initState();
-  }
-
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
-
-  dispose() {
-    animationController.dispose();
-    super.dispose();
-  }
-
-  void tapDown() {
-    elevation = 0.0;
-    animationController.forward();
-    isTappedUp = false;
-    setState(() {});
-  }
-
-  void tapUp() {
-    elevation = widget.elevation * 2;
-    if (!animationController.isAnimating) {
-      animationController.reverse();
-    }
-    isTappedUp = true;
-    setState(() {});
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: () => widget.callback(),
-        onTapDown: (TapDownDetails details) => tapDown(),
-        onTapCancel: () => tapUp(),
-        onTapUp: (TapUpDetails details) => tapUp(),
-        child: FloatingActionButton(
-          elevation: elevation,
-          onPressed: null,
-          clipBehavior: Clip.antiAlias,
-          heroTag: widget.heroTag,
-          materialTapTargetSize: widget.materialTapTargetSize,
-          tooltip: widget.tooltip,
-          child: Stack(
-            children: [
-              gradientContainer(
-                  context, widget.gradient, widget.increaseHeightBy, widget.increaseWidthBy, widget.child),
-              FadeTransition(
-                opacity: _opacity,
-                child: Container(
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [Colors.transparent, Colors.black38])),
-                ),
-              ),
-            ],
-          ),
-        ));
-  }
 }
