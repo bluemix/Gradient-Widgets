@@ -5,21 +5,6 @@
 <img src="art/screenshot-gradient-widgets.png" width="400" alt="Gradient Widgets"/>
 
 
-
-
-## Installation
-In your `pubspec.yaml` root add:
-
-```yaml
-dependencies:
-  gradient_widgets: ^0.5.0
-```
-
-then,
-
-`import 'package:gradient_widgets/gradient_widgets.dart';`
-
-
 ## Gradient Widgets
 
 > As of ^0.5.0, `shadowColor` is available for gradient buttons and cards 
@@ -46,12 +31,29 @@ You can use them when your UI needs user attention/focus,
 
 
 
+
+
+
+
+## Installation
+In your `pubspec.yaml` root add:
+
+```yaml
+dependencies:
+  gradient_widgets: ^0.5.0
+```
+
+then,
+
+`import 'package:gradient_widgets/gradient_widgets.dart';`
+
+
 ## Usage
 
 
 ### Card + Gradient
 
-```
+```dart
 GradientCard(
     gradient: Gradients.tameer,
     shadowColor: Gradients.tameer.colors.last.withOpacity(0.25),
