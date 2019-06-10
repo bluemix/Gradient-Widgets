@@ -13,9 +13,9 @@ class NamedGradient {
 List<NamedGradient> gradients = [
   NamedGradient(Gradients.hotLinear, 'Hot Linear'),
   NamedGradient(Gradients.jShine, 'J Shine'),
-  NamedGradient(Gradients.aliHussien, 'Ali Hussien'),
+  NamedGradient(Gradients.aliHussien, 'Golden Sunset'),
   NamedGradient(Gradients.rainbowBlue, 'Rainbow'),
-  NamedGradient(Gradients.ali, 'Ali'),
+  NamedGradient(Gradients.ali, 'Techno'),
   NamedGradient(Gradients.cosmicFusion, 'Cosmic Fusion'),
   NamedGradient(Gradients.backToFuture, 'Back to Future'),
   NamedGradient(Gradients.blush, 'Blush'),
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Gradient Widgets Demo',
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -93,6 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.white,
         body: ListView(
           scrollDirection: Axis.vertical,
+          physics: BouncingScrollPhysics(),
           children: <Widget>[
 //            GradientProgressIndicator(gradient: Gradients.aliHussien, value: 0.9,),
 //            GradientProgressIndicator(gradient: Gradients.byDesign,),
@@ -167,10 +168,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     .where((gradient) => gradient.gradient.colors.length == 2)
                     .map((namedGradient) => Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-                          child: _divider('  Determinate', child: GradientProgressIndicator(
-                            gradient: namedGradient.gradient,
-                            value: Random().nextDouble(),
-                          )),
+                          child: _divider('  Determinate',
+                              child: GradientProgressIndicator(
+                                gradient: namedGradient.gradient,
+                                value: Random().nextDouble(),
+                              )),
                         ))
                     .toList(),
               ),
@@ -182,7 +184,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 physics: ScrollPhysics(),
                 childAspectRatio: 0.7,
                 crossAxisCount: 5,
-                crossAxisSpacing: 10,
+                crossAxisSpacing: 2,
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 children: List.generate(gradients.length, (index) {
                   return Center(
