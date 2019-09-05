@@ -93,8 +93,6 @@ class GradientButtonState extends State<GradientButton> with SingleTickerProvide
 
   @override
   Widget build(BuildContext context) {
-    print('_opacity.value: ${_opacity.value}');
-
     final ThemeData theme = Theme.of(context);
 
     BorderRadius borderRadiusCopy = widget.shapeRadius ?? BorderRadius.circular(40.0);
