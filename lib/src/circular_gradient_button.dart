@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import '../gradient_widgets.dart';
 
 class CircularGradientButton extends GradientButton {
-  CircularGradientButton(
-      {this.gradient = Gradients.hotLinear,
-      @required this.child,
+  const CircularGradientButton(
+      {@required this.child,
       @required this.callback,
+      this.gradient = Gradients.hotLinear,
       this.shadowColor = Colors.black45,
       this.increaseHeightBy = 56.0,
       this.increaseWidthBy = 0.0,
@@ -26,24 +26,40 @@ class CircularGradientButton extends GradientButton {
             heroTag: heroTag,
             tooltip: tooltip,
             materialTapTargetSize: materialTapTargetSize,
-            shape: CircleBorder(),
+            shape: const CircleBorder(),
 //            shape: RoundedRectangleBorder(),
-            constraints: BoxConstraints.tightFor(
+            constraints: const BoxConstraints.tightFor(
               width: 56.0,
               height: 56.0,
-            )
-  );
+            ));
 
+  @override
   final Widget child;
+
+  @override
   final Gradient gradient;
+
+  @override
   final Color shadowColor;
 
+  @override
   final VoidCallback callback;
+
+  @override
   final double elevation;
+
+  @override
   final double increaseHeightBy;
+
+  @override
   final double increaseWidthBy;
+
+  @override
   final String tooltip;
 
+  @override
   final Object heroTag;
+
+  @override
   final MaterialTapTargetSize materialTapTargetSize;
 }

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.1
+
+- `GradientButton` is not clickable when it is not enabled (`isEnabled = false`)
+- Merging #12
+
 ## 0.5.0
 
 - `shadowColor` for `GradientCard`, `GradientButton` and `CircularGradientButton`

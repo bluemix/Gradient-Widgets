@@ -35,7 +35,7 @@ In your `pubspec.yaml` root add:
 
 ```yaml
 dependencies:
-  gradient_widgets: ^0.5.0
+  gradient_widgets: ^0.5.1
 ```
 
 then,

@@ -13,7 +13,7 @@ const double _kLinearProgressIndicatorHeight = 6.0;
 const int _kIndeterminateLinearDuration = 1800;
 
 class GradientProgressIndicator extends StatefulWidget {
-  GradientProgressIndicator({
+  const GradientProgressIndicator({
     this.key,
     this.value,
     this.gradient = Gradients.hotLinear,
