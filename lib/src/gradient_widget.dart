@@ -4,23 +4,23 @@ import 'package:gradient_widgets/src/common.dart';
 import '../gradient_widgets.dart';
 
 class GradientWidget extends StatefulWidget {
-  GradientWidget(
-      {this.gradient = Gradients.hotLinear,
-        @required this.child,
-        this.callback,
-        this.shadowColor = Colors.black45,
-        this.shape,
-        this.shapeRadius,
-        this.textStyle,
-        this.elevation = 5.0,
-        this.isEnabled = true,
-        this.disabledGradient,
-        this.increaseHeightBy = 0.0,
-        this.increaseWidthBy = 0.0,
-        this.constraints,
-        this.heroTag,
-        this.tooltip,
-        this.materialTapTargetSize});
+  const GradientWidget(
+      {@required this.child,
+      this.gradient = Gradients.hotLinear,
+      this.callback,
+      this.shadowColor = Colors.black45,
+      this.shape,
+      this.shapeRadius,
+      this.textStyle,
+      this.elevation = 5.0,
+      this.isEnabled = true,
+      this.disabledGradient,
+      this.increaseHeightBy = 0.0,
+      this.increaseWidthBy = 0.0,
+      this.constraints,
+      this.heroTag,
+      this.tooltip,
+      this.materialTapTargetSize});
 
   final Widget child;
   final Gradient gradient;
@@ -57,7 +57,7 @@ class GradientButtonState extends State<GradientButton> with SingleTickerProvide
 
   @override
   void initState() {
-    animationController = AnimationController(duration: Duration(milliseconds: 200), vsync: this);
+    animationController = AnimationController(duration: const Duration(milliseconds: 200), vsync: this);
 
     _opacity = CurvedAnimation(parent: animationController, curve: Curves.fastOutSlowIn);
 
@@ -97,10 +97,10 @@ class GradientButtonState extends State<GradientButton> with SingleTickerProvide
 
     final ThemeData theme = Theme.of(context);
 
-    BorderRadius borderRadiusCopy = widget.shapeRadius ?? BorderRadius.circular(40.0);
+    final BorderRadius borderRadiusCopy = widget.shapeRadius ?? BorderRadius.circular(40.0);
 //    ShapeBorder shapeCopy = widget.shape ?? RoundedRectangleBorder(borderRadius: borderRadiusCopy);
-    ShapeBorder shapeCopy = widget.shape ?? RoundedRectangleBorder(borderRadius: borderRadiusCopy);
-    TextStyle textStyleCopy = widget.textStyle ?? theme.textTheme.button.copyWith(color: Colors.white);
+    final ShapeBorder shapeCopy = widget.shape ?? RoundedRectangleBorder(borderRadius: borderRadiusCopy);
+    final TextStyle textStyleCopy = widget.textStyle ?? theme.textTheme.button.copyWith(color: Colors.white);
 
     if (widget.isEnabled) {
       gradient = widget.gradient;
@@ -121,10 +121,10 @@ class GradientButtonState extends State<GradientButton> with SingleTickerProvide
 
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
-      onTap: () => widget.callback(),
-      onTapDown: (TapDownDetails details) => tapDown(),
-      onTapCancel: () => tapUp(),
-      onTapUp: (TapUpDetails details) => tapUp(),
+      onTap: callback == null ? null : widget.callback,
+      onTapDown: callback == null ? null : (TapDownDetails details) => tapDown(),
+      onTapCancel: callback == null ? null : tapUp,
+      onTapUp: callback == null ? null : (TapUpDetails details) => tapUp(),
       child: Center(
         child: PhysicalShape(
           color: Colors.transparent,

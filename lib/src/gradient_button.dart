@@ -5,9 +5,10 @@ import 'gradient_widget.dart';
 
 class GradientButton extends GradientWidget {
   GradientButton(
-      {this.gradient = Gradients.hotLinear,
+      {
       @required this.child,
       @required this.callback,
+        this.gradient = Gradients.hotLinear,
       this.shadowColor = Colors.black45,
       this.shape,
       this.shapeRadius,
@@ -38,21 +39,51 @@ class GradientButton extends GradientWidget {
             tooltip: tooltip,
             materialTapTargetSize: materialTapTargetSize);
 
+  @override
   final Widget child;
+
+  @override
   final Gradient gradient;
+
+  @override
   final Color shadowColor;
+
+  @override
   final Gradient disabledGradient;
+
+  @override
   final VoidCallback callback;
+
+  @override
   final ShapeBorder shape;
+
+  @override
   final BorderRadius shapeRadius;
+
+  @override
   final TextStyle textStyle;
+
+  @override
   final bool isEnabled;
+
+  @override
   final double elevation;
+
+  @override
   final double increaseHeightBy;
+
+  @override
   final double increaseWidthBy;
+
+  @override
   final BoxConstraints constraints;
+
+  @override
   final String tooltip;
 
+  @override
   final Object heroTag;
+
+  @override
   final MaterialTapTargetSize materialTapTargetSize;
 }
