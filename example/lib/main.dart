@@ -97,14 +97,6 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
 //            GradientProgressIndicator(gradient: Gradients.aliHussien, value: 0.9,),
 //            GradientProgressIndicator(gradient: Gradients.byDesign,),
-            GradientButton(
-              child: const Text('Gradient'),
-              callback: () => print('GradientButton clicked'),
-              increaseWidthBy: 20,
-              isEnabled: false,
-              gradient: Gradients.rainbowBlue,
-              shadowColor: Colors.blueGrey.withOpacity(0.25),
-            ),
             _divider('GradientText'),
             SizedBox(
               height: 54,

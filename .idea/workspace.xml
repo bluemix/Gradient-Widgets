@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1265f5a9-8a28-42f0-ade4-6f865cfd97dd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/circular_gradient_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/circular_gradient_button.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/gradient_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/gradient_button.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/gradient_progress_indicator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/gradient_progress_indicator.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/gradient_text.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/gradient_text.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/gradients.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/gradients.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
