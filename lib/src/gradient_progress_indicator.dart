@@ -130,6 +130,7 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator> w
 //    final TextDirection textDirection = Directionality.of(context);
 
     return AnimatedBuilder(
+      key: widget.key,
       animation: pAnimation,
       builder: (BuildContext context, Widget child) {
         return _buildIndicator(context, pAnimation.value);

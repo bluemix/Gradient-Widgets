@@ -158,6 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
             _divider('GradientProgressIndicator'),
             _divider('Indeterminate',
                 child: GradientProgressIndicator(
+                  key: widget.key,
                   gradient: gradients[4].gradient,
                 )),
             SizedBox(

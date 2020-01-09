@@ -5,10 +5,10 @@ import 'gradient_widget.dart';
 
 class GradientButton extends GradientWidget {
   const GradientButton(
-      {
-      @required this.child,
+      {@required this.child,
       @required this.callback,
-        this.gradient = Gradients.hotLinear,
+      Key key,
+      this.gradient = Gradients.hotLinear,
       this.shadowColor = Colors.black45,
       this.shape,
       this.shapeRadius,
@@ -23,6 +23,7 @@ class GradientButton extends GradientWidget {
       this.tooltip,
       this.materialTapTargetSize})
       : super(
+            key: key,
             child: child,
             callback: callback,
             shadowColor: shadowColor,

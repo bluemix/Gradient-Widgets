@@ -46,6 +46,7 @@ class GradientText extends StatelessWidget {
       shaderCallback: (rect) => gradient.createShader(shaderRect ?? rect),
       child: Text(
         data,
+        key: key,
         style: style,
         textAlign: textAlign,
         textDirection: textDirection,

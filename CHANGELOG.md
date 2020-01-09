@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.2
+
+- `Key` for widgets
+
 ## 0.5.1
 
 - `GradientButton` is not clickable when it is not enabled (`isEnabled = false`)

@@ -6,6 +6,7 @@ import '../gradient_widgets.dart';
 class GradientWidget extends StatefulWidget {
   const GradientWidget(
       {@required this.child,
+      this.key,
       this.gradient = Gradients.hotLinear,
       this.callback,
       this.shadowColor = Colors.black45,
@@ -22,6 +23,7 @@ class GradientWidget extends StatefulWidget {
       this.tooltip,
       this.materialTapTargetSize});
 
+  final Key key;
   final Widget child;
   final Gradient gradient;
   final Color shadowColor;
@@ -118,6 +120,7 @@ class GradientButtonState extends State<GradientButton> with SingleTickerProvide
     final ButtonThemeData buttonTheme = ButtonTheme.of(context).copyWith(padding: const EdgeInsets.all(0.0));
 
     return GestureDetector(
+      key: widget.key,
       behavior: HitTestBehavior.opaque,
       onTap: callback == null ? null : widget.callback,
       onTapDown: callback == null ? null : (TapDownDetails details) => tapDown(),

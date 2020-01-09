@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1265f5a9-8a28-42f0-ade4-6f865cfd97dd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/circular_gradient_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/circular_gradient_button.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/gradient_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/gradient_button.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/gradient_progress_indicator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/gradient_progress_indicator.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/gradient_text.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/gradient_text.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/gradient_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/gradient_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,25 +99,25 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="367" key="GridCell.Tab.0.bottom" timestamp="1576319239626">
+    <state width="1398" height="367" key="GridCell.Tab.0.bottom" timestamp="1576320544535">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="367" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1576319239626" />
-    <state width="1398" height="367" key="GridCell.Tab.0.center" timestamp="1576319239625">
+    <state width="1398" height="367" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1576320544535" />
+    <state width="1398" height="367" key="GridCell.Tab.0.center" timestamp="1576320544534">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="367" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1576319239625" />
-    <state width="1398" height="367" key="GridCell.Tab.0.left" timestamp="1576319239625">
+    <state width="1398" height="367" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1576320544534" />
+    <state width="1398" height="367" key="GridCell.Tab.0.left" timestamp="1576320544534">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="367" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1576319239625" />
-    <state width="1398" height="367" key="GridCell.Tab.0.right" timestamp="1576319239626">
+    <state width="1398" height="367" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1576320544534" />
+    <state width="1398" height="367" key="GridCell.Tab.0.right" timestamp="1576320544535">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="367" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1576319239626" />
-    <state width="311" height="181" key="javadoc.popup.new" timestamp="1576318611759">
+    <state width="1398" height="367" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1576320544535" />
+    <state width="311" height="181" key="javadoc.popup.new" timestamp="1578556535492">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="311" height="181" key="javadoc.popup.new/0.0.1440.900@0.0.1440.900" timestamp="1576318611759" />
+    <state width="311" height="181" key="javadoc.popup.new/0.0.1440.900@0.0.1440.900" timestamp="1578556535492" />
   </component>
 </project>
