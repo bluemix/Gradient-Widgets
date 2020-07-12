@@ -115,7 +115,7 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator> w
     return ((rest ? (1 - value) : value) * 10).round();
   }
 
-  List<int> _defineRatios(double animationValue, double startSolid, double endSolid) {
+  List<int> _defineRatios(double animationValue, double startSolid) {
     if (startSolid == null || (animationValue < startSolid)) {
       return [_normalizePart(animationValue, false), 0, _normalizePart(animationValue, true)];
     } else {
@@ -128,7 +128,7 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator> w
   }
 
   Widget _buildIndicator(BuildContext context, double animationValue) {
-    final ratios = _defineRatios(animationValue, widget.startSolid, widget.endSolid);
+    final ratios = _defineRatios(animationValue, widget.startSolid);
     return Container(
       constraints: const BoxConstraints.tightFor(
         width: double.infinity,
