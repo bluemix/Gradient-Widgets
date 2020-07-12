@@ -13,17 +13,21 @@ const double _kLinearProgressIndicatorHeight = 6.0;
 const int _kIndeterminateLinearDuration = 1800;
 
 class GradientProgressIndicator extends StatefulWidget {
-  const GradientProgressIndicator({
-    this.key,
-    this.value,
-    this.backgroundColor,
-    this.gradient = Gradients.hotLinear,
-  });
+  const GradientProgressIndicator(
+      {this.key,
+      this.value,
+      this.backgroundColor,
+      this.gradient = Gradients.hotLinear,
+      this.solidColor,
+      this.startSolid});
 
   final Key key;
   final double value;
   final LinearGradient gradient;
   final Color backgroundColor;
+  final double startSolid;
+  final Color solidColor;
+  
   @override
   _GradientProgressIndicatorState createState() => _GradientProgressIndicatorState();
 }
@@ -63,7 +67,7 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator> w
   void _setColorsArray() {
     colors.clear();
     colors.addAll(widget.gradient.colors);
-    colors.add(widget.backgroundColor);
+    colors.add(widget.gradient.colors.last);
   }
 
   void _setControllerListener() {
@@ -107,22 +111,55 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator> w
     _controller.stop();
   }
 
+  int _normalizePart(double value, bool rest) {
+    return ((rest ? (1 - value) : value) * 10).round();
+  }
+
+  List<int> _defineRatios(double animationValue, double startSolid, double endSolid) {
+    if (startSolid == null || (animationValue < startSolid)) {
+      return [_normalizePart(animationValue, false), 0, _normalizePart(animationValue, true)];
+    } else {
+      return [
+        _normalizePart(startSolid, false),
+        _normalizePart(animationValue, false) - _normalizePart(startSolid, false),
+        _normalizePart(animationValue, true)
+      ];
+    }
+  }
+
   Widget _buildIndicator(BuildContext context, double animationValue) {
+    final ratios = _defineRatios(animationValue, widget.startSolid, widget.endSolid);
     return Container(
       constraints: const BoxConstraints.tightFor(
         width: double.infinity,
         height: _kLinearProgressIndicatorHeight,
       ),
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: widget.gradient.begin,
-              end: widget.gradient.end,
-              stops: <double>[
-                0.0,
-                animationValue,
-                widget.value == null ? 1.0 : animationValue + 0.01,
-              ],
-              colors: colors)),
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            //flex: (animationValue * 10).round(),
+            flex: ratios[0],
+            child: Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: widget.gradient.begin,
+                      end: widget.gradient.end,
+                      stops: <double>[
+                        0.0,
+                        animationValue,
+                        widget.value == null ? 1.0 : animationValue + 0.01,
+                      ],
+                      colors: colors)),
+            ),
+          ),
+          Expanded(
+              flex: ratios[1],
+              child: Container(color: widget.solidColor)),
+          Expanded(
+              flex: ratios[2],
+              child: Container(color: widget.backgroundColor)),
+        ],
+      ),
     );
   }
 
