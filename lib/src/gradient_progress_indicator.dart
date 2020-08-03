@@ -106,7 +106,7 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator> w
     _controller.stop();
   }
 
-  Widget _buildIndicator(BuildContext context, double animationValue) {
+  Widget _buildIndicator(BuildContext context, double animationValue,TextDirection textDirection) {
     return Container(
       constraints: const BoxConstraints.tightFor(
         width: double.infinity,
@@ -114,8 +114,12 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator> w
       ),
       decoration: BoxDecoration(
           gradient: LinearGradient(
-              begin: widget.gradient.begin,
-              end: widget.gradient.end,
+              begin: textDirection == TextDirection.ltr
+                  ? widget.gradient.begin
+                  : widget.gradient.end,
+              end: textDirection == TextDirection.ltr
+                  ? widget.gradient.end
+                  : widget.gradient.begin,
               stops: <double>[
                 0.0,
                 animationValue,
@@ -127,13 +131,13 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator> w
 
   @override
   Widget build(BuildContext context) {
-//    final TextDirection textDirection = Directionality.of(context);
+   final TextDirection textDirection = Directionality.of(context);
 
     return AnimatedBuilder(
       key: widget.key,
       animation: pAnimation,
       builder: (BuildContext context, Widget child) {
-        return _buildIndicator(context, pAnimation.value);
+        return _buildIndicator(context, pAnimation.value,textDirection);
       },
     );
   }
