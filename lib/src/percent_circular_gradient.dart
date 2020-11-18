@@ -6,9 +6,9 @@ import '../gradient_widgets.dart';
 
 class CircularProgress extends StatefulWidget {
   const CircularProgress(
-      {this.progressColor = Colors.yellow,
+      {@required this.progress,
+      this.progressColor = Colors.yellow,
       this.bcgColor = Colors.grey,
-      this.progress,
       this.gradient = Gradients.hotLinear,
       this.size = 200});
 
