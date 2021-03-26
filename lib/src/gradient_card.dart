@@ -8,7 +8,6 @@ import 'package:flutter/widgets.dart';
 import '../gradient_widgets.dart';
 
 class GradientCard extends StatelessWidget {
-
   const GradientCard({
     Key? key,
     this.gradient = Gradients.hotLinear,
@@ -47,7 +46,7 @@ class GradientCard extends StatelessWidget {
             ),
         clipBehavior: clipBehavior,
         child: Container(
-          margin: margin ?? const EdgeInsets.all(4),
+          margin: margin,
           decoration: ShapeDecoration(
               shape: shape ??
                   const RoundedRectangleBorder(
