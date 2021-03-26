@@ -10,7 +10,7 @@ import '../gradient_widgets.dart';
 class GradientCard extends StatelessWidget {
 
   const GradientCard({
-    Key key,
+    Key? key,
     this.gradient = Gradients.hotLinear,
     this.shape,
     this.margin = const EdgeInsets.all(4),
@@ -21,14 +21,14 @@ class GradientCard extends StatelessWidget {
     this.semanticContainer = true,
   }) : super(key: key);
 
-  final ShapeBorder shape;
+  final ShapeBorder? shape;
   final Clip clipBehavior;
   final EdgeInsetsGeometry margin;
   final bool semanticContainer;
-  final Widget child;
+  final Widget? child;
   final LinearGradient gradient;
-  final double elevation;
-  final Color shadowColor;
+  final double? elevation;
+  final Color? shadowColor;
 
   @override
   Widget build(BuildContext context) {
