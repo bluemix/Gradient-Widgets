@@ -2,17 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1265f5a9-8a28-42f0-ade4-6f865cfd97dd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/example/test_driver/app.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/test_driver/app_test.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/circular_gradient_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/circular_gradient_button.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/gradient_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/gradient_button.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradient_widgets.iml" beforeDir="false" afterPath="$PROJECT_DIR$/gradient_widgets.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/gradient_progress_indicator.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/gradient_progress_indicator.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/gradient_text.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/gradient_text.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/gradient_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/gradient_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +25,6 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Nexus_5_API_27" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -30,41 +32,33 @@
       </list>
     </option>
   </component>
+  <component name="FlutterView" splitter-proportion="0.5682705" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="IgnoredFileRootStore">
-    <option name="generatedRoots">
-      <set>
-        <option value="$PROJECT_DIR$/.idea" />
-      </set>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="834" />
   </component>
   <component name="ProjectId" id="1UxbQSbF4C5o8G9yduSOfwcncEk" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540911596813" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Dart" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/example/lib" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/example" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/example/lib" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager">
@@ -73,18 +67,7 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="project-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -99,25 +82,41 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="367" key="GridCell.Tab.0.bottom" timestamp="1576320544535">
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1579000242209">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="367" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1576320544535" />
-    <state width="1398" height="367" key="GridCell.Tab.0.center" timestamp="1576320544534">
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1579000242209" />
+    <state width="1398" height="367" key="GridCell.Tab.0.bottom" timestamp="1580884850815">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="367" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1576320544534" />
-    <state width="1398" height="367" key="GridCell.Tab.0.left" timestamp="1576320544534">
+    <state width="1398" height="367" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1580819895210" />
+    <state width="1398" height="367" key="GridCell.Tab.0.bottom/1440.0.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1580884686952" />
+    <state width="1398" height="367" key="GridCell.Tab.0.bottom/1440.23.1920.1057/0.0.1440.900@0.0.1440.900" timestamp="1580884850815" />
+    <state width="1398" height="367" key="GridCell.Tab.0.center" timestamp="1580884850801">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="367" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1576320544534" />
-    <state width="1398" height="367" key="GridCell.Tab.0.right" timestamp="1576320544535">
+    <state width="1398" height="367" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1580819895210" />
+    <state width="1398" height="367" key="GridCell.Tab.0.center/1440.0.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1580884686951" />
+    <state width="1398" height="367" key="GridCell.Tab.0.center/1440.23.1920.1057/0.0.1440.900@0.0.1440.900" timestamp="1580884850801" />
+    <state width="1398" height="367" key="GridCell.Tab.0.left" timestamp="1580884850799">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="367" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1576320544535" />
-    <state width="311" height="181" key="javadoc.popup.new" timestamp="1578556535492">
+    <state width="1398" height="367" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1580819895209" />
+    <state width="1398" height="367" key="GridCell.Tab.0.left/1440.0.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1580884686948" />
+    <state width="1398" height="367" key="GridCell.Tab.0.left/1440.23.1920.1057/0.0.1440.900@0.0.1440.900" timestamp="1580884850799" />
+    <state width="1398" height="367" key="GridCell.Tab.0.right" timestamp="1580884850814">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="311" height="181" key="javadoc.popup.new/0.0.1440.900@0.0.1440.900" timestamp="1578556535492" />
+    <state width="1398" height="367" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1580819895210" />
+    <state width="1398" height="367" key="GridCell.Tab.0.right/1440.0.1920.1080/0.0.1440.900@0.0.1440.900" timestamp="1580884686952" />
+    <state width="1398" height="367" key="GridCell.Tab.0.right/1440.23.1920.1057/0.0.1440.900@0.0.1440.900" timestamp="1580884850814" />
+    <state x="221" y="89" key="SettingsEditor" timestamp="1579154713030">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="221" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1579154713030" />
+    <state width="311" height="181" key="javadoc.popup.new" timestamp="1579156965310">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="311" height="181" key="javadoc.popup.new/0.0.1440.900@0.0.1440.900" timestamp="1579156965310" />
   </component>
 </project>

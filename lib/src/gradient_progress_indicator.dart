@@ -14,12 +14,11 @@ const int _kIndeterminateLinearDuration = 1800;
 
 class GradientProgressIndicator extends StatefulWidget {
   const GradientProgressIndicator({
-    this.key,
+    Key key,
     this.value,
     this.gradient = Gradients.hotLinear,
-  });
+  }) : super(key: key);
 
-  final Key key;
   final double value;
   final LinearGradient gradient;
 
@@ -128,9 +127,7 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator> w
   @override
   Widget build(BuildContext context) {
 //    final TextDirection textDirection = Directionality.of(context);
-
     return AnimatedBuilder(
-      key: widget.key,
       animation: pAnimation,
       builder: (BuildContext context, Widget child) {
         return _buildIndicator(context, pAnimation.value);

@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 import '../gradient_widgets.dart';
 
 class GradientText extends StatelessWidget {
-  const GradientText(
-    this.data, {
+  const GradientText(this.data, {
+    Key key,
     @required this.style,
     this.gradient = Gradients.hotLinear,
     this.shaderRect,
-    this.key,
     this.textAlign,
     this.textDirection,
     this.locale,
@@ -17,11 +16,8 @@ class GradientText extends StatelessWidget {
     this.textScaleFactor,
     this.maxLines,
     this.semanticsLabel,
-  });
+  }) : super(key: key);
 
-
-  @override
-  final Key key;
 
   final String data;
   final TextStyle style;
@@ -46,7 +42,6 @@ class GradientText extends StatelessWidget {
       shaderCallback: (rect) => gradient.createShader(shaderRect ?? rect),
       child: Text(
         data,
-        key: key,
         style: style,
         textAlign: textAlign,
         textDirection: textDirection,
