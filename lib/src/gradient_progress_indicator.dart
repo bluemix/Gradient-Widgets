@@ -19,6 +19,7 @@ class GradientProgressIndicator extends StatefulWidget {
     this.gradient = Gradients.hotLinear,
   }) : super(key: key);
 
+  @override
   final Key? key;
   final double? value;
   final LinearGradient gradient;

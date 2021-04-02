@@ -54,26 +54,30 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Widget _divider(String title, {Widget? child}) {
+  Widget _divider(
+    String title, {
+    Widget? child,
+  }) {
+    final List<Widget> children = [
+      Padding(
+        padding: const EdgeInsets.all(8),
+        child: Text(
+          title,
+          style: const TextStyle(color: Colors.black87, fontWeight: FontWeight.w200),
+        ),
+      ),
+      Expanded(
+        flex: 1,
+        child: child ??
+            Container(
+              height: 1,
+              color: const Color(0xffFFD189),
+            ),
+      ),
+    ];
     return Row(
       mainAxisSize: MainAxisSize.max,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: Text(
-            title,
-            style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w200),
-          ),
-        ),
-        Expanded(
-          flex: 1,
-          child: child ??
-              Container(
-                height: 1,
-                color: const Color(0xffFFD189),
-              ),
-        ),
-      ],
+      children: children,
     );
   }
 
@@ -103,18 +107,17 @@ class _MyHomePageState extends State<MyHomePage> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: gradients
-                    .map((namedGradient) =>
-                    Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: GradientText(
-                        'Hello',
-                        gradient: namedGradient.gradient,
-                        style: TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ))
+                    .map((namedGradient) => Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: GradientText(
+                            'Hello',
+                            gradient: namedGradient.gradient,
+                            style: const TextStyle(
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ))
                     .toList(),
               ),
             ),
@@ -124,18 +127,17 @@ class _MyHomePageState extends State<MyHomePage> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: gradients
-                    .map((namedGradient) =>
-                    Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: GradientButton(
-                        key: Key(namedGradient.name),
-                        child: const Text('Gradient'),
-                        callback: () => print('${namedGradient.name} clicked'),
-                        increaseWidthBy: 20,
-                        gradient: namedGradient.gradient,
-                        shadowColor: namedGradient.gradient.colors.last.withOpacity(0.25),
-                      ),
-                    ))
+                    .map((namedGradient) => Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: GradientButton(
+                            key: Key(namedGradient.name),
+                            child: const Text('Gradient'),
+                            callback: () => print('${namedGradient.name} clicked'),
+                            increaseWidthBy: 20,
+                            gradient: namedGradient.gradient,
+                            shadowColor: namedGradient.gradient.colors.last.withOpacity(0.25),
+                          ),
+                        ))
                     .toList(),
               ),
             ),
@@ -145,18 +147,17 @@ class _MyHomePageState extends State<MyHomePage> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: gradients
-                    .map((namedGradient) =>
-                    Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: CircularGradientButton(
-                        key: Key('Circular ${namedGradient.name}'),
-                        child: Icon(Icons.gradient),
-                        callback: () => print('${namedGradient.name} clicked'),
-                        gradient: namedGradient.gradient,
-                        shadowColor: namedGradient.gradient.colors.last.withOpacity(0.5),
-                        elevation: 5,
-                      ),
-                    ))
+                    .map((namedGradient) => Padding(
+                          padding: const EdgeInsets.all(8),
+                          child: CircularGradientButton(
+                            key: Key('Circular ${namedGradient.name}'),
+                            child: Icon(Icons.gradient),
+                            callback: () => print('${namedGradient.name} clicked'),
+                            gradient: namedGradient.gradient,
+                            shadowColor: namedGradient.gradient.colors.last.withOpacity(0.5),
+                            elevation: 5,
+                          ),
+                        ))
                     .toList(),
               ),
             ),
@@ -169,19 +170,53 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               height: 42,
               child: ListView(
+                primary: false,
                 children: gradients
                     .take(1)
                     .where((gradient) => gradient.gradient.colors.length == 2)
-                    .map((namedGradient) =>
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-                      child: _divider('  Determinate',
-                          child: GradientProgressIndicator(
-                            gradient: namedGradient.gradient,
-                            value: Random().nextDouble(),
-                          )),
-                    ))
+                    .map((namedGradient) => Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                          child: _divider('  Determinate',
+                              child: GradientProgressIndicator(
+                                gradient: namedGradient.gradient,
+                                value: Random().nextDouble(),
+                              )),
+                        ))
                     .toList(),
+              ),
+            ),
+            _divider('GradientCircularProgressIndicator'),
+            SizedBox(
+              height: 150,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Column(
+                    children: [
+                      GradientCircularProgressIndicator(
+                        gradient: gradients[2].gradient,
+                        radius: 116,
+                      ),
+                      const Text(
+                        'Indeterminate',
+                        style: const TextStyle(color: Colors.black87, fontWeight: FontWeight.w200),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      GradientCircularProgressIndicator(
+                        gradient: gradients[2].gradient,
+                        radius: 116,
+                        value: 70,
+                      ),
+                      Text(
+                        'Determinate',
+                        style: const TextStyle(color: Colors.black87, fontWeight: FontWeight.w200),
+                      ),
+                    ],
+                  ),
+                ].toList(),
               ),
             ),
             _divider('GradientCard'),
