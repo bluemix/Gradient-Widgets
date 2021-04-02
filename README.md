@@ -80,6 +80,26 @@ GradientProgressIndicator(
 );
 ```
 
+### Circular Progress Indicator + Gradient
+
+<img src="art/GradientCircularProgressIndicator.gif" alt="Circular Gradient Progress Widgets"/>
+
+> must be gradient.colors.length = 2
+
+indeterminate
+```dart
+GradientCircularProgressIndicator(
+  gradient: Gradients.aliHussien,
+);
+```
+
+determinate
+```dart
+GradientCircularProgressIndicator(
+  gradient: Gradients.aliHussien,
+  radius: 100,
+);
+```
 
 ### Normal Button + Gradient
 
