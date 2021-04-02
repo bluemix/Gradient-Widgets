@@ -2,6 +2,7 @@
 
 ## 0.6.0
 
+- GradientCircularProgressIndicator
 - Null Safety
 
 ## 0.5.2
