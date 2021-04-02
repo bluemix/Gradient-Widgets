@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.0
+
+- Null Safety
+
 ## 0.5.2
 
 - `Key` for widgets

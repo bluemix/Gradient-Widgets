@@ -45,16 +45,16 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Widget _divider(String title, {Widget child}) {
+  Widget _divider(String title, {Widget? child}) {
     return Row(
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
@@ -86,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
           centerTitle: true,
           elevation: 0,
           title: Text(
-            widget.title,
+            widget.title!,
             style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w300),
           ),
         ),
