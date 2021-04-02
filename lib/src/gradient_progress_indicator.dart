@@ -14,33 +14,37 @@ const int _kIndeterminateLinearDuration = 1800;
 
 class GradientProgressIndicator extends StatefulWidget {
   const GradientProgressIndicator({
-    Key key,
+    this.key,
     this.value,
     this.gradient = Gradients.hotLinear,
   }) : super(key: key);
 
-  final double value;
+  final Key? key;
+  final double? value;
   final LinearGradient gradient;
 
   @override
-  _GradientProgressIndicatorState createState() => _GradientProgressIndicatorState();
+  _GradientProgressIndicatorState createState() =>
+      _GradientProgressIndicatorState();
 }
 
-class _GradientProgressIndicatorState extends State<GradientProgressIndicator> with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<double> pAnimation;
+class _GradientProgressIndicatorState extends State<GradientProgressIndicator>
+    with SingleTickerProviderStateMixin {
+  AnimationController? _controller;
+  late Animation<double> pAnimation;
   List<Color> colors = [];
 
-  double prevValue = 0.0;
+  double? prevValue = 0.0;
 
-  CurvedAnimation curvedAnimation;
+  late CurvedAnimation curvedAnimation;
 
   @override
   void initState() {
     super.initState();
 
     assert(widget.gradient != null, 'Please set the gradient!');
-    assert(widget.gradient.colors.length == 2, 'gradient must have two colors only');
+    assert(widget.gradient.colors.length == 2,
+        'gradient must have two colors only');
 
     _setColorsArray();
 
@@ -51,11 +55,13 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator> w
 
     _setControllerListener();
 
-    curvedAnimation = CurvedAnimation(parent: _controller, curve: Curves.fastOutSlowIn);
-    pAnimation = Tween<double>(begin: prevValue, end: widget.value ?? 1.0).animate(curvedAnimation);
+    curvedAnimation =
+        CurvedAnimation(parent: _controller!, curve: Curves.fastOutSlowIn);
+    pAnimation = Tween<double>(begin: prevValue, end: widget.value ?? 1.0)
+        .animate(curvedAnimation);
     prevValue = widget.value ?? 0;
 
-    _controller.forward();
+    _controller!.forward();
   }
 
   void _setColorsArray() {
@@ -66,11 +72,12 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator> w
 
   void _setControllerListener() {
     if (widget.value == null) {
-      _controller.addStatusListener((status) {
+      _controller!.addStatusListener((status) {
         if (status == AnimationStatus.dismissed && widget.value == null) {
-          _controller.forward();
-        } else if (status == AnimationStatus.completed && widget.value == null) {
-          _controller.reverse();
+          _controller!.forward();
+        } else if (status == AnimationStatus.completed &&
+            widget.value == null) {
+          _controller!.reverse();
         }
       });
     }
@@ -84,11 +91,12 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator> w
 
     _setControllerListener();
 
-    if (widget.value == null && !_controller.isAnimating) {
-      _controller.reset();
+    if (widget.value == null && !_controller!.isAnimating) {
+      _controller!.reset();
     } else if (widget.value != null) {
-      pAnimation = Tween<double>(begin: prevValue, end: widget.value).animate(curvedAnimation);
-      _controller
+      pAnimation = Tween<double>(begin: prevValue, end: widget.value)
+          .animate(curvedAnimation);
+      _controller!
         ..reset()
         ..forward();
       prevValue = widget.value;
@@ -97,12 +105,12 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator> w
 
   @override
   void dispose() {
-    _controller.dispose();
+    _controller!.dispose();
     super.dispose();
   }
 
   void stopAnimation() {
-    _controller.stop();
+    _controller!.stop();
   }
 
   Widget _buildIndicator(BuildContext context, double animationValue) {
@@ -129,7 +137,7 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator> w
 //    final TextDirection textDirection = Directionality.of(context);
     return AnimatedBuilder(
       animation: pAnimation,
-      builder: (BuildContext context, Widget child) {
+      builder: (BuildContext context, Widget? child) {
         return _buildIndicator(context, pAnimation.value);
       },
     );

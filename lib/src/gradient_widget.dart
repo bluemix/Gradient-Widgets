@@ -5,8 +5,8 @@ import '../gradient_widgets.dart';
 
 class GradientWidget extends StatefulWidget {
   const GradientWidget(
-      {@required this.child,
-      Key key,
+      {required this.child,
+      this.key,
       this.gradient = Gradients.hotLinear,
       this.callback,
       this.shadowColor = Colors.black45,
@@ -21,26 +21,27 @@ class GradientWidget extends StatefulWidget {
       this.constraints,
       this.heroTag,
       this.tooltip,
-      this.materialTapTargetSize}): super(key: key);
+      this.materialTapTargetSize})
+      : super(key: key);
 
-
+  final Key? key;
   final Widget child;
   final Gradient gradient;
   final Color shadowColor;
-  final Gradient disabledGradient;
-  final VoidCallback callback;
-  final ShapeBorder shape;
-  final BorderRadius shapeRadius;
-  final TextStyle textStyle;
+  final Gradient? disabledGradient;
+  final VoidCallback? callback;
+  final ShapeBorder? shape;
+  final BorderRadius? shapeRadius;
+  final TextStyle? textStyle;
   final bool isEnabled;
   final double elevation;
   final double increaseHeightBy;
   final double increaseWidthBy;
-  final BoxConstraints constraints;
-  final String tooltip;
+  final BoxConstraints? constraints;
+  final String? tooltip;
 
-  final Object heroTag;
-  final MaterialTapTargetSize materialTapTargetSize;
+  final Object? heroTag;
+  final MaterialTapTargetSize? materialTapTargetSize;
 
   @override
   GradientButtonState createState() {
@@ -49,13 +50,13 @@ class GradientWidget extends StatefulWidget {
 }
 
 class GradientButtonState extends State<GradientButton> with SingleTickerProviderStateMixin {
-  Animation<double> _opacity;
-  AnimationController animationController;
+  late Animation<double> _opacity;
+  late AnimationController animationController;
   bool isTappedUp = false;
-  double elevation;
+  late double elevation;
 
-  Gradient gradient;
-  VoidCallback callback;
+  Gradient? gradient;
+  VoidCallback? callback;
 
   @override
   void initState() {
@@ -100,7 +101,7 @@ class GradientButtonState extends State<GradientButton> with SingleTickerProvide
     final BorderRadius borderRadiusCopy = widget.shapeRadius ?? BorderRadius.circular(40.0);
 //    ShapeBorder shapeCopy = widget.shape ?? RoundedRectangleBorder(borderRadius: borderRadiusCopy);
     final ShapeBorder shapeCopy = widget.shape ?? RoundedRectangleBorder(borderRadius: borderRadiusCopy);
-    final TextStyle textStyleCopy = widget.textStyle ?? theme.textTheme.button.copyWith(color: Colors.white);
+    final TextStyle textStyleCopy = widget.textStyle ?? theme.textTheme.button!.copyWith(color: Colors.white);
 
     if (widget.isEnabled) {
       gradient = widget.gradient;
@@ -140,8 +141,8 @@ class GradientButtonState extends State<GradientButton> with SingleTickerProvide
               textStyle: textStyleCopy,
               onPressed: null,
               constraints: widget.constraints ??
-                  BoxConstraints.loose(Size(
-                      buttonTheme.minWidth + widget.increaseWidthBy, buttonTheme.height + widget.increaseHeightBy)),
+                  BoxConstraints.loose(
+                      Size(buttonTheme.minWidth + widget.increaseWidthBy, buttonTheme.height + widget.increaseHeightBy)),
               materialTapTargetSize: MaterialTapTargetSize.padded,
               clipBehavior: Clip.antiAliasWithSaveLayer,
               child: Stack(

@@ -8,21 +8,19 @@ void main() {
     final SerializableFinder firstGradientButton = find.byValueKey('Hot Linear');
     final SerializableFinder firstCircularGradientButton = find.byValueKey('Circular Hot Linear');
 
-    FlutterDriver driver;
+    FlutterDriver? driver;
 
     setUpAll(() async {
       driver = await FlutterDriver.connect();
     });
 
     tearDownAll(() async {
-      if (driver != null) {
-        await driver.close();
-      }
+      await driver?.close();
     });
 
     test('tapping buttons', () async {
 
-      await driver.runUnsynchronized(() async {
+      await driver?.runUnsynchronized(() async {
         //      var layoutTree = await driver.getLayerTree();
 //      print('layoutTree.toJson(): ${layoutTree.toJson()}');
 
@@ -30,10 +28,10 @@ void main() {
 //      print('renderTree.toJson(): ${renderTree.toJson()}');
 
         print('will tap on the first GradientButton...');
-        await driver.tap(firstGradientButton);
+        await driver?.tap(firstGradientButton);
 
         print('will tap on the first CircularGradientButton');
-        await driver.tap(firstCircularGradientButton);
+        await driver?.tap(firstCircularGradientButton);
       });
 
 

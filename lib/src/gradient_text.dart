@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import '../gradient_widgets.dart';
 
 class GradientText extends StatelessWidget {
-  const GradientText(this.data, {
-    Key key,
-    @required this.style,
+  const GradientText(
+    this.data, {
+    this.key,
+    required this.style,
     this.gradient = Gradients.hotLinear,
     this.shaderRect,
     this.textAlign,
@@ -18,19 +19,20 @@ class GradientText extends StatelessWidget {
     this.semanticsLabel,
   }) : super(key: key);
 
-
+  @override
+  final Key? key;
   final String data;
   final TextStyle style;
-  final TextAlign textAlign;
-  final TextDirection textDirection;
-  final Locale locale;
-  final bool softWrap;
-  final TextOverflow overflow;
-  final double textScaleFactor;
-  final int maxLines;
-  final String semanticsLabel;
+  final TextAlign? textAlign;
+  final TextDirection? textDirection;
+  final Locale? locale;
+  final bool? softWrap;
+  final TextOverflow? overflow;
+  final double? textScaleFactor;
+  final int? maxLines;
+  final String? semanticsLabel;
   final Gradient gradient;
-  final Rect shaderRect;
+  final Rect? shaderRect;
 
   @override
   Widget build(BuildContext context) {
