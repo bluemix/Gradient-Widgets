@@ -45,35 +45,39 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Widget _divider(String title, {Widget child}) {
+  Widget _divider(
+    String title, {
+    Widget? child,
+  }) {
+    final List<Widget> children = [
+      Padding(
+        padding: const EdgeInsets.all(8),
+        child: Text(
+          title,
+          style: const TextStyle(color: Colors.black87, fontWeight: FontWeight.w200),
+        ),
+      ),
+      Expanded(
+        flex: 1,
+        child: child ??
+            Container(
+              height: 1,
+              color: const Color(0xffFFD189),
+            ),
+      ),
+    ];
     return Row(
       mainAxisSize: MainAxisSize.max,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: Text(
-            title,
-            style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w200),
-          ),
-        ),
-        Expanded(
-          flex: 1,
-          child: child ??
-              Container(
-                height: 1,
-                color: Color(0xffFFD189),
-              ),
-        ),
-      ],
+      children: children,
     );
   }
 
@@ -86,14 +90,14 @@ class _MyHomePageState extends State<MyHomePage> {
           centerTitle: true,
           elevation: 0,
           title: Text(
-            widget.title,
+            widget.title!,
             style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w300),
           ),
         ),
         backgroundColor: Colors.white,
         body: ListView(
           scrollDirection: Axis.vertical,
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           children: <Widget>[
 //            GradientProgressIndicator(gradient: Gradients.aliHussien, value: 0.9,),
 //            GradientProgressIndicator(gradient: Gradients.byDesign,),
@@ -108,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: GradientText(
                             'Hello',
                             gradient: namedGradient.gradient,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 40,
                               fontWeight: FontWeight.bold,
                             ),
@@ -126,7 +130,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     .map((namedGradient) => Padding(
                           padding: const EdgeInsets.all(8),
                           child: GradientButton(
-                            child: Text('Gradient'),
+                            key: Key(namedGradient.name),
+                            child: const Text('Gradient'),
                             callback: () => print('${namedGradient.name} clicked'),
                             increaseWidthBy: 20,
                             gradient: namedGradient.gradient,
@@ -145,6 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     .map((namedGradient) => Padding(
                           padding: const EdgeInsets.all(8),
                           child: CircularGradientButton(
+                            key: Key('Circular ${namedGradient.name}'),
                             child: Icon(Icons.gradient),
                             callback: () => print('${namedGradient.name} clicked'),
                             gradient: namedGradient.gradient,
@@ -164,6 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               height: 42,
               child: ListView(
+                primary: false,
                 children: gradients
                     .take(1)
                     .where((gradient) => gradient.gradient.colors.length == 2)
@@ -176,6 +183,40 @@ class _MyHomePageState extends State<MyHomePage> {
                               )),
                         ))
                     .toList(),
+              ),
+            ),
+            _divider('GradientCircularProgressIndicator'),
+            SizedBox(
+              height: 150,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Column(
+                    children: [
+                      GradientCircularProgressIndicator(
+                        gradient: gradients[2].gradient,
+                        radius: 116,
+                      ),
+                      const Text(
+                        'Indeterminate',
+                        style: const TextStyle(color: Colors.black87, fontWeight: FontWeight.w200),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      GradientCircularProgressIndicator(
+                        gradient: gradients[2].gradient,
+                        radius: 116,
+                        value: 70,
+                      ),
+                      Text(
+                        'Determinate',
+                        style: const TextStyle(color: Colors.black87, fontWeight: FontWeight.w200),
+                      ),
+                    ],
+                  ),
+                ].toList(),
               ),
             ),
             _divider('GradientCard'),

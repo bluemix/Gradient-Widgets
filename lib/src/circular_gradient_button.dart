@@ -5,9 +5,9 @@ import '../gradient_widgets.dart';
 
 class CircularGradientButton extends GradientButton {
   const CircularGradientButton(
-      {@required this.child,
-      @required this.callback,
-      Key key,
+      {required this.child,
+      required this.callback,
+      Key? key,
       this.gradient = Gradients.hotLinear,
       this.shadowColor = Colors.black45,
       this.increaseHeightBy = 56.0,
@@ -57,11 +57,11 @@ class CircularGradientButton extends GradientButton {
   final double increaseWidthBy;
 
   @override
-  final String tooltip;
+  final String? tooltip;
 
   @override
-  final Object heroTag;
+  final Object? heroTag;
 
   @override
-  final MaterialTapTargetSize materialTapTargetSize;
+  final MaterialTapTargetSize? materialTapTargetSize;
 }

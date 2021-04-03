@@ -25,7 +25,7 @@ You can use them when your UI needs user attention/focus,
 
 ☑️ GradientProgressIndicator
 
-◻️ CircularGradientProgressIndicator
+☑️ CircularGradientProgressIndicator
 
 ◻️ GradientAppBar
 
@@ -35,7 +35,7 @@ In your `pubspec.yaml` root add:
 
 ```yaml
 dependencies:
-  gradient_widgets: ^0.5.1
+  gradient_widgets: ^0.6.0
 ```
 
 then,
@@ -61,7 +61,6 @@ GradientCard(
 most parameters are the same as the `Card`.
 
 
-
 ### Progress Indicator + Gradient
 
 <img src="art/GradientProgressIndicators.gif" alt="Gradient Widgets"/>
@@ -73,7 +72,6 @@ indeterminate
 GradientProgressIndicator(gradient: Gradients.rainbowBlue,);
 ```
 
-
 determinate
 ```dart
 GradientProgressIndicator(
@@ -82,7 +80,26 @@ GradientProgressIndicator(
 );
 ```
 
+### Circular Progress Indicator + Gradient
 
+<img src="art/GradientCircularProgressIndicator.gif" alt="Circular Gradient Progress Widgets"/>
+
+> must be gradient.colors.length = 2
+
+indeterminate
+```dart
+GradientCircularProgressIndicator(
+  gradient: Gradients.aliHussien,
+);
+```
+
+determinate
+```dart
+GradientCircularProgressIndicator(
+  gradient: Gradients.aliHussien,
+  radius: 100,
+);
+```
 
 ### Normal Button + Gradient
 
