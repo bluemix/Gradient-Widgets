@@ -3,7 +3,6 @@
 // found in the LICENSE file.
 // modified by https://bluemix.github.io
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -43,7 +42,6 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator>
   void initState() {
     super.initState();
 
-    assert(widget.gradient != null, 'Please set the gradient!');
     assert(widget.gradient.colors.length == 2,
         'gradient must have two colors only');
 
