@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
 
 class NamedGradient {
@@ -39,13 +40,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Gradient Widgets'),
+      home: const MyHomePage(title: 'Gradient Widgets'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, this.title}) : super(key: key);
+  const MyHomePage({Key? key, this.title}) : super(key: key);
 
   final String? title;
 
@@ -63,7 +64,8 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(8),
         child: Text(
           title,
-          style: const TextStyle(color: Colors.black87, fontWeight: FontWeight.w200),
+          style: const TextStyle(
+              color: Colors.black87, fontWeight: FontWeight.w200),
         ),
       ),
       Expanded(
@@ -85,13 +87,15 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          brightness: Brightness.light,
+          // brightness: Brightness.light,
+          systemOverlayStyle: SystemUiOverlayStyle.dark,
           backgroundColor: Colors.transparent,
           centerTitle: true,
           elevation: 0,
           title: Text(
             widget.title!,
-            style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w300),
+            style: const TextStyle(
+                color: Colors.grey, fontWeight: FontWeight.w300),
           ),
         ),
         backgroundColor: Colors.white,
@@ -132,10 +136,12 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: GradientButton(
                             key: Key(namedGradient.name),
                             child: const Text('Gradient'),
-                            callback: () => print('${namedGradient.name} clicked'),
+                            callback: () =>
+                                print('${namedGradient.name} clicked'),
                             increaseWidthBy: 20,
                             gradient: namedGradient.gradient,
-                            shadowColor: namedGradient.gradient.colors.last.withOpacity(0.25),
+                            shadowColor: namedGradient.gradient.colors.last
+                                .withOpacity(0.25),
                           ),
                         ))
                     .toList(),
@@ -151,10 +157,12 @@ class _MyHomePageState extends State<MyHomePage> {
                           padding: const EdgeInsets.all(8),
                           child: CircularGradientButton(
                             key: Key('Circular ${namedGradient.name}'),
-                            child: Icon(Icons.gradient),
-                            callback: () => print('${namedGradient.name} clicked'),
+                            child: const Icon(Icons.gradient),
+                            callback: () =>
+                                print('${namedGradient.name} clicked'),
                             gradient: namedGradient.gradient,
-                            shadowColor: namedGradient.gradient.colors.last.withOpacity(0.5),
+                            shadowColor: namedGradient.gradient.colors.last
+                                .withOpacity(0.5),
                             elevation: 5,
                           ),
                         ))
@@ -175,7 +183,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     .take(1)
                     .where((gradient) => gradient.gradient.colors.length == 2)
                     .map((namedGradient) => Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 0, vertical: 0),
                           child: _divider('  Determinate',
                               child: GradientProgressIndicator(
                                 gradient: namedGradient.gradient,
@@ -199,7 +208,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       const Text(
                         'Indeterminate',
-                        style: const TextStyle(color: Colors.black87, fontWeight: FontWeight.w200),
+                        style: TextStyle(
+                            color: Colors.black87, fontWeight: FontWeight.w200),
                       ),
                     ],
                   ),
@@ -210,9 +220,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         radius: 116,
                         value: 70,
                       ),
-                      Text(
+                      const Text(
                         'Determinate',
-                        style: const TextStyle(color: Colors.black87, fontWeight: FontWeight.w200),
+                        style: TextStyle(
+                            color: Colors.black87, fontWeight: FontWeight.w200),
                       ),
                     ],
                   ),
@@ -223,7 +234,7 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               height: 65 * (gradients.length / 3),
               child: GridView.count(
-                physics: ScrollPhysics(),
+                physics: const ScrollPhysics(),
                 childAspectRatio: 0.7,
                 crossAxisCount: 5,
                 crossAxisSpacing: 2,
@@ -241,8 +252,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: GradientCard(
                             gradient: gradients[index].gradient,
                             elevation: 8,
-                            shadowColor: gradients[index].gradient.colors.last.withOpacity(0.25),
-                            margin: const EdgeInsets.symmetric(vertical: 2, horizontal: 2),
+                            shadowColor: gradients[index]
+                                .gradient
+                                .colors
+                                .last
+                                .withOpacity(0.25),
+                            margin: const EdgeInsets.symmetric(
+                                vertical: 2, horizontal: 2),
                           ),
                         ),
                         Expanded(
@@ -261,7 +277,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
 
-            Divider(
+            const Divider(
               color: Colors.blueGrey,
             ),
           ],
