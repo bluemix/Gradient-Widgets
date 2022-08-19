@@ -1,6 +1,7 @@
 library gradient_widgets;
 
 export 'src/circular_gradient_button.dart';
+export 'src/gradient_appbar.dart';
 export 'src/gradient_button.dart';
 export 'src/gradient_card.dart';
 export 'src/gradient_circular_progress_indicator.dart';

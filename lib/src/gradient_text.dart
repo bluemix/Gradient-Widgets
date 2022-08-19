@@ -5,8 +5,8 @@ import '../gradient_widgets.dart';
 class GradientText extends StatelessWidget {
   const GradientText(
     this.data, {
-    this.key,
     required this.style,
+    this.key,
     this.gradient = Gradients.hotLinear,
     this.shaderRect,
     this.textAlign,
