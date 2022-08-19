@@ -76,4 +76,14 @@ class Gradients {
     Color(0xff000000),
     Color(0xff434343),
   ]);
+
+  static const vision = LinearGradient(
+      colors: [Color(0xff000146), Color(0xff1DB3DF)],
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight);
+
+  static const coal = LinearGradient(
+      colors: [Color(0xffEB5757), Color(0xff000000)],
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight);
 }
