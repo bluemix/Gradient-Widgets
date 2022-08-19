@@ -1,12 +1,12 @@
-import 'dart:async';
-import 'dart:io';
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('basic launch test', () {
-    final SerializableFinder firstGradientButton = find.byValueKey('Hot Linear');
-    final SerializableFinder firstCircularGradientButton = find.byValueKey('Circular Hot Linear');
+    final SerializableFinder firstGradientButton =
+        find.byValueKey('Hot Linear');
+    final SerializableFinder firstCircularGradientButton =
+        find.byValueKey('Circular Hot Linear');
 
     FlutterDriver? driver;
 
@@ -19,7 +19,6 @@ void main() {
     });
 
     test('tapping buttons', () async {
-
       await driver?.runUnsynchronized(() async {
         //      var layoutTree = await driver.getLayerTree();
 //      print('layoutTree.toJson(): ${layoutTree.toJson()}');
@@ -33,10 +32,6 @@ void main() {
         print('will tap on the first CircularGradientButton');
         await driver?.tap(firstCircularGradientButton);
       });
-
-
     });
-
   });
 }
-
