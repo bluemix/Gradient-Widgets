@@ -9,9 +9,7 @@ const int _kIndeterminateCircularDuration = 1800;
 
 class GradientCircularProgressIndicator extends StatefulWidget {
   const GradientCircularProgressIndicator(
-      {this.value,
-      this.gradient = Gradients.hotLinear,
-      this.radius = 200});
+      {this.value, this.gradient = Gradients.hotLinear, this.radius = 200});
 
   final double? value;
   final Gradient gradient;
@@ -23,7 +21,9 @@ class GradientCircularProgressIndicator extends StatefulWidget {
   }
 }
 
-class _GradientCircularProgressIndicatorState extends State<GradientCircularProgressIndicator> with SingleTickerProviderStateMixin {
+class _GradientCircularProgressIndicatorState
+    extends State<GradientCircularProgressIndicator>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> pAnimation;
   List<Color> colors = [];
@@ -36,7 +36,8 @@ class _GradientCircularProgressIndicatorState extends State<GradientCircularProg
   void initState() {
     super.initState();
 
-    assert(widget.gradient.colors.length == 2, 'gradient must have two colors only');
+    assert(widget.gradient.colors.length == 2,
+        'gradient must have two colors only');
 
     _setColorsArray();
 
@@ -47,8 +48,10 @@ class _GradientCircularProgressIndicatorState extends State<GradientCircularProg
 
     _setControllerListener();
 
-    curvedAnimation = CurvedAnimation(parent: _controller, curve: Curves.fastOutSlowIn);
-    pAnimation = Tween<double>(begin: prevValue, end: widget.value ?? 100).animate(curvedAnimation);
+    curvedAnimation =
+        CurvedAnimation(parent: _controller, curve: Curves.fastOutSlowIn);
+    pAnimation = Tween<double>(begin: prevValue, end: widget.value ?? 100)
+        .animate(curvedAnimation);
     prevValue = widget.value ?? 0;
 
     _controller.forward();
@@ -65,7 +68,8 @@ class _GradientCircularProgressIndicatorState extends State<GradientCircularProg
       _controller.addStatusListener((status) {
         if (status == AnimationStatus.dismissed && widget.value == null) {
           _controller.forward();
-        } else if (status == AnimationStatus.completed && widget.value == null) {
+        } else if (status == AnimationStatus.completed &&
+            widget.value == null) {
           _controller.reverse();
           // _controller.forward();
           // colors = colors.reversed.toList();
@@ -85,8 +89,8 @@ class _GradientCircularProgressIndicatorState extends State<GradientCircularProg
     if (widget.value == null && !_controller.isAnimating) {
       _controller.reset();
     } else if (widget.value != null) {
-
-      pAnimation = Tween<double>(begin: prevValue, end: widget.value).animate(curvedAnimation);
+      pAnimation = Tween<double>(begin: prevValue, end: widget.value)
+          .animate(curvedAnimation);
       _controller
         ..reset()
         ..forward();
@@ -134,7 +138,11 @@ class _GradientCircularProgressIndicatorState extends State<GradientCircularProg
 
 class RadialPainter extends CustomPainter {
   RadialPainter(
-      {required this.bgColor, required this.lineColor, required this.strokeWidth, required this.percent, required this.gradientColors});
+      {required this.bgColor,
+      required this.lineColor,
+      required this.strokeWidth,
+      required this.percent,
+      required this.gradientColors});
 
   final Color bgColor;
   final Color lineColor;
@@ -159,7 +167,7 @@ class RadialPainter extends CustomPainter {
     final Offset center = Offset(size.width / 2, size.height / 2);
     final double radius = min(size.width / 2, size.height / 2);
     final double endAngle = 2 * pi * (percent / 100);
-    final double startAngle = -pi / 2;
+    const double startAngle = -pi / 2;
 
     // print('percent: ${percent}');
     // print('radius: ${radius}');
@@ -176,7 +184,8 @@ class RadialPainter extends CustomPainter {
     );
 
     // adding the gradient
-    progressLine.shader = _gradient.createShader(Rect.fromCenter(height: radius, center: center, width: radius));
+    progressLine.shader = _gradient.createShader(
+        Rect.fromCenter(height: radius, center: center, width: radius));
     canvas.drawCircle(center, radius, bgLine);
 
     // draw the progress

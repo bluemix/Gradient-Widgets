@@ -6,7 +6,7 @@ import '../gradient_widgets.dart';
 class GradientWidget extends StatefulWidget {
   const GradientWidget(
       {required this.child,
-      this.key,
+      Key? key,
       this.gradient = Gradients.hotLinear,
       this.callback,
       this.shadowColor = Colors.black45,
@@ -24,7 +24,6 @@ class GradientWidget extends StatefulWidget {
       this.materialTapTargetSize})
       : super(key: key);
 
-  final Key? key;
   final Widget child;
   final Gradient gradient;
   final Color shadowColor;
@@ -49,7 +48,8 @@ class GradientWidget extends StatefulWidget {
   }
 }
 
-class GradientButtonState extends State<GradientButton> with SingleTickerProviderStateMixin {
+class GradientButtonState extends State<GradientButton>
+    with SingleTickerProviderStateMixin {
   late Animation<double> _opacity;
   late AnimationController animationController;
   bool isTappedUp = false;
@@ -60,9 +60,11 @@ class GradientButtonState extends State<GradientButton> with SingleTickerProvide
 
   @override
   void initState() {
-    animationController = AnimationController(duration: const Duration(milliseconds: 200), vsync: this);
+    animationController = AnimationController(
+        duration: const Duration(milliseconds: 200), vsync: this);
 
-    _opacity = CurvedAnimation(parent: animationController, curve: Curves.fastOutSlowIn);
+    _opacity = CurvedAnimation(
+        parent: animationController, curve: Curves.fastOutSlowIn);
 
     elevation = widget.elevation;
     animationController.addStatusListener((status) {
@@ -98,10 +100,13 @@ class GradientButtonState extends State<GradientButton> with SingleTickerProvide
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
 
-    final BorderRadius borderRadiusCopy = widget.shapeRadius ?? BorderRadius.circular(40.0);
+    final BorderRadius borderRadiusCopy =
+        widget.shapeRadius ?? BorderRadius.circular(40.0);
 //    ShapeBorder shapeCopy = widget.shape ?? RoundedRectangleBorder(borderRadius: borderRadiusCopy);
-    final ShapeBorder shapeCopy = widget.shape ?? RoundedRectangleBorder(borderRadius: borderRadiusCopy);
-    final TextStyle textStyleCopy = widget.textStyle ?? theme.textTheme.button!.copyWith(color: Colors.white);
+    final ShapeBorder shapeCopy =
+        widget.shape ?? RoundedRectangleBorder(borderRadius: borderRadiusCopy);
+    final TextStyle textStyleCopy = widget.textStyle ??
+        theme.textTheme.button!.copyWith(color: Colors.white);
 
     if (widget.isEnabled) {
       gradient = widget.gradient;
@@ -118,12 +123,14 @@ class GradientButtonState extends State<GradientButton> with SingleTickerProvide
           );
     }
 
-    final ButtonThemeData buttonTheme = ButtonTheme.of(context).copyWith(padding: const EdgeInsets.all(0.0));
+    final ButtonThemeData buttonTheme =
+        ButtonTheme.of(context).copyWith(padding: const EdgeInsets.all(0.0));
 
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: callback == null ? null : widget.callback,
-      onTapDown: callback == null ? null : (TapDownDetails details) => tapDown(),
+      onTapDown:
+          callback == null ? null : (TapDownDetails details) => tapDown(),
       onTapCancel: callback == null ? null : tapUp,
       onTapUp: callback == null ? null : (TapUpDetails details) => tapUp(),
       child: Center(
@@ -141,17 +148,19 @@ class GradientButtonState extends State<GradientButton> with SingleTickerProvide
               textStyle: textStyleCopy,
               onPressed: null,
               constraints: widget.constraints ??
-                  BoxConstraints.loose(
-                      Size(buttonTheme.minWidth + widget.increaseWidthBy, buttonTheme.height + widget.increaseHeightBy)),
+                  BoxConstraints.loose(Size(
+                      buttonTheme.minWidth + widget.increaseWidthBy,
+                      buttonTheme.height + widget.increaseHeightBy)),
               materialTapTargetSize: MaterialTapTargetSize.padded,
               clipBehavior: Clip.antiAliasWithSaveLayer,
               child: Stack(
                 children: <Widget>[
-                  gradientContainer(context, gradient, widget.increaseHeightBy, widget.increaseWidthBy, widget.child),
+                  gradientContainer(context, gradient, widget.increaseHeightBy,
+                      widget.increaseWidthBy, widget.child),
                   FadeTransition(
                       opacity: _opacity,
                       child: Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             gradient: LinearGradient(
                                 begin: Alignment.topCenter,
                                 end: Alignment.bottomCenter,
